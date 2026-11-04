@@ -1,0 +1,760 @@
+[
+    {
+        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/gowin_pll/gowin_pll.v",
+        "InstLine": 1,
+        "InstName": "Gowin_PLL",
+        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/gowin_pll/gowin_pll.v",
+        "ModuleLine": 1,
+        "ModuleName": "Gowin_PLL",
+        "SubInsts": [
+            {
+                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/gowin_pll/gowin_pll.v",
+                "InstLine": 24,
+                "InstName": "u_pll",
+                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/gowin_pll/gowin_pll_mod.v",
+                "ModuleLine": 10,
+                "ModuleName": "Gowin_PLL_MOD"
+            },
+            {
+                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/gowin_pll/gowin_pll.v",
+                "InstLine": 37,
+                "InstName": "u_pll_init",
+                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/pll_init.v",
+                "ModuleLine": 4,
+                "ModuleName": "PLL_INIT"
+            }
+        ]
+    },
+    {
+        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep.v",
+        "InstLine": 2,
+        "InstName": "usb3_ep",
+        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep.v",
+        "ModuleLine": 2,
+        "ModuleName": "usb3_ep"
+    },
+    {
+        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep0in_ram.v",
+        "InstLine": 2,
+        "InstName": "usb3_ep0in_ram",
+        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep0in_ram.v",
+        "ModuleLine": 2,
+        "ModuleName": "usb3_ep0in_ram"
+    },
+    {
+        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/master_sram_iic.v",
+        "InstLine": 8,
+        "InstName": "master_sram_iic",
+        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/master_sram_iic.v",
+        "ModuleLine": 8,
+        "ModuleName": "master_sram_iic"
+    },
+    {
+        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
+        "InstLine": 3,
+        "InstName": "top",
+        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
+        "ModuleLine": 3,
+        "ModuleName": "top",
+        "SubInsts": [
+            {
+                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
+                "InstLine": 239,
+                "InstName": "cc_ctrl_inst",
+                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/gw_i2c_master.v",
+                "ModuleLine": 7,
+                "ModuleName": "gw_i2c_master",
+                "SubInsts": [
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/gw_i2c_master.v",
+                        "InstLine": 114,
+                        "InstName": "u_iic_controller",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/iic_controller.v",
+                        "ModuleLine": 5,
+                        "ModuleName": "iic_controller"
+                    },
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/gw_i2c_master.v",
+                        "InstLine": 132,
+                        "InstName": "u_i2c_master_top",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/i2c_master/i2c_master.v",
+                        "ModuleLine": 972,
+                        "ModuleName": "I2C_MASTER_Top",
+                        "SubInsts": [
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/i2c_master/i2c_master.v",
+                                "InstLine": 1015,
+                                "InstName": "u_i2c_master",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/i2c_master/i2c_master.v",
+                                "ModuleLine": 15,
+                                "ModuleName": "~i2c_master.I2C_MASTER_Top"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
+                "InstLine": 259,
+                "InstName": "SerDes_Top_inst",
+                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/serdes.v",
+                "ModuleLine": 11,
+                "ModuleName": "SerDes_Top",
+                "SubInsts": [
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/serdes.v",
+                        "InstLine": 567,
+                        "InstName": "upar_arbiter_wrap_SerDes_Top_inst",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/upar_arbiter/upar_arbiter.v",
+                        "ModuleLine": 2029,
+                        "ModuleName": "~upar_arbiter_wrap.SerDes_Top",
+                        "SubInsts": [
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/upar_arbiter/upar_arbiter.v",
+                                "InstLine": 2076,
+                                "InstName": "u_upar_arbiter",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/upar_arbiter/upar_arbiter.v",
+                                "ModuleLine": 14,
+                                "ModuleName": "~upar_arbiter.SerDes_Top"
+                            }
+                        ]
+                    },
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/serdes.v",
+                        "InstLine": 591,
+                        "InstName": "USB3_2_PHY_Top_inst",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/usb3_2_phy/usb3_2_phy.v",
+                        "ModuleLine": 31107,
+                        "ModuleName": "USB3_2_PHY_Top",
+                        "SubInsts": [
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/usb3_2_phy/usb3_2_phy.v",
+                                "InstLine": 31272,
+                                "InstName": "Inst_usb3_2_phy",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/usb3_2_phy/usb3_2_phy.v",
+                                "ModuleLine": 14,
+                                "ModuleName": "~usb3_2_phy.USB3_2_PHY_Top"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
+                "InstLine": 326,
+                "InstName": "USB3_2_Device_Controller_Top_inst",
+                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/USB3_2_Device_Controller_Top.sv",
+                "ModuleLine": 2,
+                "ModuleName": "USB3_2_Device_Controller_Top",
+                "SubInsts": [
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/USB3_2_Device_Controller_Top.sv",
+                        "InstLine": 81,
+                        "InstName": "usb3_2_device_controller_inst",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_2_device_controller.sv",
+                        "ModuleLine": 2,
+                        "ModuleName": "usb3_2_device_controller",
+                        "SubInsts": [
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_2_device_controller.sv",
+                                "InstLine": 260,
+                                "InstName": "iu3p",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                "ModuleLine": 30345,
+                                "ModuleName": "usb3_pipe",
+                                "SubInsts": [
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                        "InstLine": 32779,
+                                        "InstName": "iu3p_5g",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                        "ModuleLine": 11842,
+                                        "ModuleName": "~usb3_pipe_5g.USB3_2_Device_Controller_Top",
+                                        "SubInsts": [
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                "InstLine": 20451,
+                                                "InstName": "iu3rds",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                "ModuleLine": 923,
+                                                "ModuleName": "~usb3_descramble.USB3_2_Device_Controller_Top",
+                                                "SubInsts": [
+                                                    {
+                                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                        "InstLine": 8012,
+                                                        "InstName": "iu3srx",
+                                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                        "ModuleLine": 57,
+                                                        "ModuleName": "~usb3_lfsr.USB3_2_Device_Controller_Top"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                "InstLine": 20466,
+                                                "InstName": "iu3ss",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                "ModuleLine": 8669,
+                                                "ModuleName": "~usb3_scramble.USB3_2_Device_Controller_Top",
+                                                "SubInsts": [
+                                                    {
+                                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                        "InstLine": 11821,
+                                                        "InstName": "iu3srx",
+                                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                        "ModuleLine": 8030,
+                                                        "ModuleName": "~usb3_lfsr.USB3_2_Device_Controller_Top_0"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                        "InstLine": 32840,
+                                        "InstName": "iu3p_10g",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                        "ModuleLine": 20991,
+                                        "ModuleName": "~usb3_pipe_10g.USB3_2_Device_Controller_Top",
+                                        "SubInsts": [
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                "InstLine": 30328,
+                                                "InstName": "sync_fifo_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+                                                "ModuleLine": 20485,
+                                                "ModuleName": "~sync_fifo.USB3_2_Device_Controller_Top"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_2_device_controller.sv",
+                                "InstLine": 378,
+                                "InstName": "iu3lt",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ltssm_device.v",
+                                "ModuleLine": 2,
+                                "ModuleName": "usb3_ltssm_device"
+                            },
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_2_device_controller.sv",
+                                "InstLine": 512,
+                                "InstName": "iu3l",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                "ModuleLine": 56732,
+                                "ModuleName": "usb3_link",
+                                "SubInsts": [
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133400,
+                                        "InstName": "usb3_TxHp_inst",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 57,
+                                        "ModuleName": "~usb3_TxHp.USB3_2_Device_Controller_Top"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133413,
+                                        "InstName": "usb3_TXLgood_cache",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 2047,
+                                        "ModuleName": "~usb3_TXLcmd.USB3_2_Device_Controller_Top"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133424,
+                                        "InstName": "usb3_TXLcrd_cache",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 2292,
+                                        "ModuleName": "~usb3_TXLcmd.USB3_2_Device_Controller_Top_0"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133436,
+                                        "InstName": "usb3_TXLup_cache",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 2533,
+                                        "ModuleName": "~usb3_TXLcmd.USB3_2_Device_Controller_Top_1"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133444,
+                                        "InstName": "usb3_TXLau_cache",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 2739,
+                                        "ModuleName": "~usb3_TXLcmd.USB3_2_Device_Controller_Top_2"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133455,
+                                        "InstName": "usb3_TXLgo_cache",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 2977,
+                                        "ModuleName": "~usb3_TXLcmd.USB3_2_Device_Controller_Top_3"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133467,
+                                        "InstName": "usb3_TXLpma_cache",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 3217,
+                                        "ModuleName": "~usb3_TXLcmd.USB3_2_Device_Controller_Top_4"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133475,
+                                        "InstName": "usb3_TXLbad_cache",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 3442,
+                                        "ModuleName": "~usb3_TXLcmd.USB3_2_Device_Controller_Top_5"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133485,
+                                        "InstName": "usb3_TXLtry_cache",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 3666,
+                                        "ModuleName": "~usb3_TXLcmd.USB3_2_Device_Controller_Top_6"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133493,
+                                        "InstName": "dpp_crc_append",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 15976,
+                                        "ModuleName": "~dpp_crc_append.USB3_2_Device_Controller_Top",
+                                        "SubInsts": [
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "InstLine": 31891,
+                                                "InstName": "iu3cdptx64",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "ModuleLine": 3872,
+                                                "ModuleName": "~usb3_crc_dpp64.USB3_2_Device_Controller_Top"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "InstLine": 31896,
+                                                "InstName": "iu3cdptx56",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "ModuleLine": 6507,
+                                                "ModuleName": "~usb3_crc_dpp56.USB3_2_Device_Controller_Top"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "InstLine": 31901,
+                                                "InstName": "iu3cdptx48",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "ModuleLine": 8760,
+                                                "ModuleName": "~usb3_crc_dpp48.USB3_2_Device_Controller_Top"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "InstLine": 31906,
+                                                "InstName": "iu3cdptx40",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "ModuleLine": 10739,
+                                                "ModuleName": "~usb3_crc_dpp40.USB3_2_Device_Controller_Top"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "InstLine": 31911,
+                                                "InstName": "iu3cdptx32",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "ModuleLine": 12383,
+                                                "ModuleName": "~usb3_crc_dpp32.USB3_2_Device_Controller_Top"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "InstLine": 31916,
+                                                "InstName": "iu3cdptx24",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "ModuleLine": 13880,
+                                                "ModuleName": "~usb3_crc_dpp24.USB3_2_Device_Controller_Top"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "InstLine": 31921,
+                                                "InstName": "iu3cdptx16",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "ModuleLine": 14935,
+                                                "ModuleName": "~usb3_crc_dpp16.USB3_2_Device_Controller_Top"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "InstLine": 31926,
+                                                "InstName": "iu3cdptx8",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                                "ModuleLine": 15572,
+                                                "ModuleName": "~usb3_crc_dpp8.USB3_2_Device_Controller_Top"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133512,
+                                        "InstName": "dpp_os_append",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 31938,
+                                        "ModuleName": "~dpp_os_append.USB3_2_Device_Controller_Top"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133524,
+                                        "InstName": "GEN1_DPP_buff",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 35735,
+                                        "ModuleName": "~GEN1_DPP_buff.USB3_2_Device_Controller_Top"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133537,
+                                        "InstName": "iu3ccw5",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 36213,
+                                        "ModuleName": "~usb3_crc_cw.USB3_2_Device_Controller_Top"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133541,
+                                        "InstName": "dpp_buff_inst",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 36235,
+                                        "ModuleName": "~dpp_buff.USB3_2_Device_Controller_Top"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133556,
+                                        "InstName": "iu3cdprx64",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 44518,
+                                        "ModuleName": "~usb3_crc_dpp64.USB3_2_Device_Controller_Top_0"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133561,
+                                        "InstName": "iu3cdprx56",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 47224,
+                                        "ModuleName": "~usb3_crc_dpp56.USB3_2_Device_Controller_Top_0"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133566,
+                                        "InstName": "iu3cdprx48",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 49487,
+                                        "ModuleName": "~usb3_crc_dpp48.USB3_2_Device_Controller_Top_0"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133571,
+                                        "InstName": "iu3cdprx40",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 51436,
+                                        "ModuleName": "~usb3_crc_dpp40.USB3_2_Device_Controller_Top_0"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133576,
+                                        "InstName": "iu3cdprx32",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 53095,
+                                        "ModuleName": "~usb3_crc_dpp32.USB3_2_Device_Controller_Top_0"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133581,
+                                        "InstName": "iu3cdprx24",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 54602,
+                                        "ModuleName": "~usb3_crc_dpp24.USB3_2_Device_Controller_Top_0"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133586,
+                                        "InstName": "iu3cdprx16",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 55690,
+                                        "ModuleName": "~usb3_crc_dpp16.USB3_2_Device_Controller_Top_0"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "InstLine": 133591,
+                                        "InstName": "iu3cdprx8",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+                                        "ModuleLine": 56327,
+                                        "ModuleName": "~usb3_crc_dpp8.USB3_2_Device_Controller_Top_0"
+                                    }
+                                ]
+                            },
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_2_device_controller.sv",
+                                "InstLine": 686,
+                                "InstName": "iu3r",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                "ModuleLine": 2,
+                                "ModuleName": "usb3_protocol",
+                                "SubInsts": [
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "InstLine": 1498,
+                                        "InstName": "OUT_ACK_BUF",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "ModuleLine": 2261,
+                                        "ModuleName": "hp_buffer"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "InstLine": 1669,
+                                        "InstName": "PING_RSP_BUF",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "ModuleLine": 2261,
+                                        "ModuleName": "hp_buffer"
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "InstLine": 1985,
+                                        "InstName": "usb3_ep0_inst",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep0.v",
+                                        "ModuleLine": 2,
+                                        "ModuleName": "usb3_ep0",
+                                        "SubInsts": [
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep0.v",
+                                                "InstLine": 183,
+                                                "InstName": "ep0_transfer_out_mem_ping_pong",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_out_mem_ping_pong",
+                                                "SubInsts": [
+                                                    {
+                                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                                        "InstLine": 112,
+                                                        "InstName": "GEN_TRANSFER_OUT_MEM[0].transfer_out_mem_inst",
+                                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem.v",
+                                                        "ModuleLine": 2,
+                                                        "ModuleName": "transfer_out_mem"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep0.v",
+                                                "InstLine": 392,
+                                                "InstName": "ep0_transfer_in_mem_ping_pong",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_in_mem_ping_pong",
+                                                "SubInsts": [
+                                                    {
+                                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                                        "InstLine": 245,
+                                                        "InstName": "GEN_TRANSFER_IN_MEM[0].transfer_in_mem_inst",
+                                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem.v",
+                                                        "ModuleLine": 2,
+                                                        "ModuleName": "transfer_in_mem"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "InstLine": 2071,
+                                        "InstName": "gen_in_ep_ping_pong[1].transfer_in_mem_ping_pong_inst",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                        "ModuleLine": 2,
+                                        "ModuleName": "transfer_in_mem_ping_pong",
+                                        "SubInsts": [
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                                "InstLine": 245,
+                                                "InstName": "GEN_TRANSFER_IN_MEM[0].transfer_in_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_in_mem"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                                "InstLine": 245,
+                                                "InstName": "GEN_TRANSFER_IN_MEM[1].transfer_in_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_in_mem"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "InstLine": 2071,
+                                        "InstName": "gen_in_ep_ping_pong[2].transfer_in_mem_ping_pong_inst",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                        "ModuleLine": 2,
+                                        "ModuleName": "transfer_in_mem_ping_pong",
+                                        "SubInsts": [
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                                "InstLine": 245,
+                                                "InstName": "GEN_TRANSFER_IN_MEM[0].transfer_in_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_in_mem"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                                "InstLine": 245,
+                                                "InstName": "GEN_TRANSFER_IN_MEM[1].transfer_in_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_in_mem"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+                                                "InstLine": 245,
+                                                "InstName": "GEN_TRANSFER_IN_MEM[2].transfer_in_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_in_mem"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "InstLine": 2118,
+                                        "InstName": "gen_out_ep_ping_pong[1].transfer_out_mem_ping_pong",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                        "ModuleLine": 2,
+                                        "ModuleName": "transfer_out_mem_ping_pong",
+                                        "SubInsts": [
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                                "InstLine": 112,
+                                                "InstName": "GEN_TRANSFER_OUT_MEM[0].transfer_out_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_out_mem"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                                "InstLine": 112,
+                                                "InstName": "GEN_TRANSFER_OUT_MEM[1].transfer_out_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_out_mem"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+                                        "InstLine": 2118,
+                                        "InstName": "gen_out_ep_ping_pong[2].transfer_out_mem_ping_pong",
+                                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                        "ModuleLine": 2,
+                                        "ModuleName": "transfer_out_mem_ping_pong",
+                                        "SubInsts": [
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                                "InstLine": 112,
+                                                "InstName": "GEN_TRANSFER_OUT_MEM[0].transfer_out_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_out_mem"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                                "InstLine": 112,
+                                                "InstName": "GEN_TRANSFER_OUT_MEM[1].transfer_out_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_out_mem"
+                                            },
+                                            {
+                                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+                                                "InstLine": 112,
+                                                "InstName": "GEN_TRANSFER_OUT_MEM[2].transfer_out_mem_inst",
+                                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem.v",
+                                                "ModuleLine": 2,
+                                                "ModuleName": "transfer_out_mem"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
+                "InstLine": 404,
+                "InstName": "UserLayer_top_inst",
+                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
+                "ModuleLine": 3,
+                "ModuleName": "UserLayer_top",
+                "SubInsts": [
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
+                        "InstLine": 60,
+                        "InstName": "ControlTransfer_inst",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv",
+                        "ModuleLine": 10,
+                        "ModuleName": "ControlTransfer",
+                        "SubInsts": [
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv",
+                                "InstLine": 373,
+                                "InstName": "u_ep0_core",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_ep0_core.sv",
+                                "ModuleLine": 6,
+                                "ModuleName": "usb_ep0_core"
+                            },
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv",
+                                "InstLine": 401,
+                                "InstName": "gen_dfu.u_dfu_handler",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_dfu_handler.sv",
+                                "ModuleLine": 7,
+                                "ModuleName": "usb_dfu_handler"
+                            }
+                        ]
+                    },
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
+                        "InstLine": 110,
+                        "InstName": "EP1_loopback_inst",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP1_loopback.v",
+                        "ModuleLine": 3,
+                        "ModuleName": "EP1_loopback"
+                    },
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
+                        "InstLine": 137,
+                        "InstName": "EP2_speed_inst",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP2_speed.v",
+                        "ModuleLine": 3,
+                        "ModuleName": "EP2_speed"
+                    },
+                    {
+                        "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
+                        "InstLine": 203,
+                        "InstName": "spi_flash_controller",
+                        "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/spi_flash_controller/spi_flash_controller.sv",
+                        "ModuleLine": 9,
+                        "ModuleName": "spi_flash_controller",
+                        "SubInsts": [
+                            {
+                                "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/spi_flash_controller/spi_flash_controller.sv",
+                                "InstLine": 51,
+                                "InstName": "u_spi_phy",
+                                "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/spi_flash_controller/spi_phy.sv",
+                                "ModuleLine": 3,
+                                "ModuleName": "spi_phy"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

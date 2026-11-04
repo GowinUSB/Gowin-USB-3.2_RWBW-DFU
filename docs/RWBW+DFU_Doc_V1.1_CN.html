@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>USB3.2 复合设备 (BandWidth Test + DFU) 系统架构说明</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        @page {
+            size: A4;
+            margin: 15mm 15mm;
+            background-color: #ffffff;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            font-size: 11pt;
+            background-color: #ffffff;
+        }
+        h1, h2, h3, h4 {
+            color: #1e293b;
+            page-break-after: avoid;
+        }
+        h1 {
+            font-size: 18pt;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 14pt;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        h3 {
+            font-size: 12pt;
+            margin-top: 15px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            page-break-inside: avoid;
+            font-size: 10pt;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: bold;
+            color: #0f172a;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        code {
+            font-family: Consolas, "Courier New", monospace;
+            background-color: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 10pt;
+            color: #b91c1c;
+        }
+        pre {
+            background-color: #f1f5f9;
+            padding: 10px;
+            border-left: 4px solid #94a3b8;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 10pt;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            page-break-inside: avoid;
+        }
+        .header-meta {
+            text-align: center;
+            color: #64748b;
+            font-size: 10pt;
+            margin-bottom: 30px;
+        }
+        .warning-box {
+            border-left: 4px solid #ef4444;
+            background-color: #fef2f2;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            page-break-inside: avoid;
+        }
+        .info-box {
+            border-left: 4px solid #3b82f6;
+            background-color: #eff6ff;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            page-break-inside: avoid;
+        }
+        ul, ol {
+            margin-bottom: 10px;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .img-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .no-border-table td, .no-border-table th {
+            border: none;
+            background-color: transparent;
+            padding: 5px;
+            text-align: center;
+        }
+        .no-border-table tr:nth-child(even) {
+            background-color: transparent;
+        }
+        /* 针对 VS Code / Chrome 引擎的强制打印优化 */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+            body {
+                zoom: 1; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>USB3.2 复合设备 (BandWidth Test + DFU) 系统架构说明</h1>
+    
+    <div class="header-meta">
+        <strong>文档版本:</strong> V1.1 &nbsp;&nbsp;|&nbsp;&nbsp; 
+        <strong>更新日期:</strong> 2026-11-04 <br>
+        <strong>项目描述:</strong> 基于 FPGA 的 USB 3.2 带宽测试设备工程 (含DFU背景升级)
+    </div>
+
+    <h2>修订历史</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 10%;">版本</th>
+                <th style="width: 15%;">日期</th>
+                <th style="width: 60%;">描述</th>
+                <th style="width: 15%;">作者</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>V1.0</td>
+                <td>2026-10-14</td>
+                <td>初始版本。实现USB3.2 带宽测试功能，支持正反插。</td>
+                <td>zefeng</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td>V1.1</td>
+                <td>2026-11-4</td>
+                <td>增加 免驱DFU 功能。</td>
+                <td>zefeng</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>1. 系统概述</h2>
+    <p>本工程实现了一个基于 FPGA 的 USB 3.2 复合设备，包含 <strong>USB 带宽测试(Read/Write BandWidth Test, RWBW)</strong> 和 <strong>DFU背景升级 (Device Firmware Upgrade)</strong> 两个核心功能。其中，RWBW带宽测试有配套的 带宽测试软件 USB_RWBWTest_V1.0.1，可以进行 读写一致性测试 以及 读写压力测试。</p>
+    <p>系统支持基于标准 DFU 协议的在线背景升级功能。为确保设备的高可靠性与防“砖”能力，底层采用了 Multi-Boot 多重启动架构对 8MB(GD25Q64ESIG)/16MB(W25Q128JVSIQ) 的 SPI Flash 空间进行了严格划分：</p>
+    <ul>
+        <li><strong>工作位流 (Working Image)</strong>：运行于起始地址 <code>0x0000000</code>，作为 DFU 更新的目标区域；</li>
+        <li><strong>黄金位流 (Golden Image)</strong>：固化于 <code>0x0100000</code> 地址，作为系统恢复的底层安全基线；</li>
+        <li><strong>用户存储区</strong>：其余空间（<code>0x0200000</code> 及以上）分配给 UMS 功能作为数据存储区。</li>
+
+    </ul>
+
+    <div class="info-box">
+        <strong>💡 地址配置说明：</strong><br>
+        此处及后文提及的所有基准地址（如 <code>0x0300000</code>）均是针对 <strong>GW5AT-60</strong> 系列生成的 <code>.bin</code> 位流文件大小设定的。用户在实际开发时，可根据所使用的具体芯片型号对该地址进行调整。举例参考：
+        <ul>
+            <li><strong>GW5A-60</strong>：<code> .bin</code> 文件约占用 800 KB ，建议将黄金位流地址调整为 <code>0x0100000</code> </code>；</li>
+            <li><strong>GW5A-138</strong>：<code>.bin</code> 文件约占用 4850 KB ，建议将黄金位流地址调整为 <code>0x0500000</code></code>。</li>
+        </ul>
+    </div>
+
+    <p>系统顶层模块 <code>Top</code> 负责整合时钟网络、USB 物理层 (SoftPHY)、USB 协议层以及具体的业务子系统。该架构实现了从 USB 接口到底层 SPI Flash 以及物理 UART 逻辑引脚的数据互通。</p>
+
+    <h2>2. 外部硬件接口说明</h2>
+    <p>系统顶层 <code>Top</code> 暴露的物理引脚矩阵如下：</p>
+    <table>
+        <thead>
+            <tr>
+                <th>接口分类</th>
+                <th>信号引脚名称</th>
+                <th>方向</th>
+                <th>功能描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2"><strong>系统控制</strong></td>
+                <td><code>CLK_IN</code></td>
+                <td>Input</td>
+                <td>50MHz 基础系统时钟输入</td>
+            </tr>
+            <tr>
+                <td><code>LED</code></td>
+                <td>Output</td>
+                <td>复位完成与系统状态指示灯</td>
+            </tr>
+            <tr>
+                <td rowspan="1"><strong>USB 物理层</strong></td>
+                <td><code>\src\ip\serdes\serdes.csr</code> </td>
+                <td>Inout</td>
+                <td>USB3.2 相关接口</td>
+            </tr>
+            <tr>
+                <td rowspan="4"><strong>SPI Flash</strong></td>
+                <td><code>spi_sclk</code></td>
+                <td>Output</td>
+                <td>SPI 时钟</td>
+            </tr>
+            <tr>
+                <td><code>spi_cs</code></td>
+                <td>Output</td>
+                <td>SPI 片选信号 (低电平有效)</td>
+            </tr>
+            <tr>
+                <td><code>spi_mosi</code></td>
+                <td>Output</td>
+                <td>SPI 主机输出/从机输入 (MOSI) 数据线</td>
+            </tr>
+            <tr>
+                <td><code>spi_miso</code></td>
+                <td>Input</td>
+                <td>SPI 主机输入/从机输出 (MISO) 数据线</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>3. 核心子系统分解</h2>
+    <p>系统内部按逻辑域划分为以下主要子系统，各模块之间协同实现 USB 3.2 高速数据流处理与在线固件升级功能。</p>
+    
+    <div class="img-container">
+        <!-- 提示：请确保此处的图片已更新为 USB 3.2 架构图 -->
+        <img src="./picture/Functional_diagram.png" alt="Functional Diagram" style="display: block; margin: 30px auto; width: 90%; height: auto; max-width: 100%;">
+    </div>
+
+    <h3>3.1 时钟与复位管理 (Clock & Reset Management)</h3>
+    <ul>
+        <li><strong>时钟网络</strong>：系统通过 <code>TLVDS_IBUF</code> 接收外部差分时钟，并利用 <code>ELVDS_OBUF</code> 输出 200MHz 参考时钟驱动底层物理层。系统核心控制逻辑的工作时钟 (<code>pclk</code>) 则由 USB 3.2 PHY 直接提供。</li>
+        <li><strong>多级复位逻辑</strong>：顶层逻辑内置了启动延时计数器，实现了多阶段的异步复位与安全同步释放序列 (<code>sys_rst_n</code>, <code>phy_resetn</code>, <code>phy_resetn2</code>)，以此避免上电初期的亚稳态，确保 SerDes 锁相环的安全初始化。</li>
+    </ul>
+
+    <h3>3.2 USB 底层通信框架 (USB Core Framework)</h3>
+    <ul>
+        <li><strong><code>SerDes_Top</code> (USB 3.2 物理层)</strong>：利用 FPGA 底层的高速硬核 SerDes 资源，实现 USB 3.2 协议的物理信号收发，并向协议层提供标准的 PIPE 数据总线 (如 <code>phy_pipe_rx_data</code>, <code>phy_pipe_tx_data</code>) 及控制接口。</li>
+        <li><strong><code>USB3_2_Device_Controller_Top</code> (USB 3.2 核心控制器)</strong>：处理高速 USB 通信的链路层与协议层逻辑。负责维持 LTSSM (链路训练状态机)、包组装与解析、CRC校验及数据加解扰，并将总线事务转化为各端点 (Endpoint) 的标准化读写请求。</li>
+    </ul>
+
+    <h3>3.3 用户业务逻辑层 (User Layer)</h3>
+    <p>顶层的 <code>UserLayer_top</code> 模块负责统筹设备的各种控制请求与特定的业务数据交互：</p>
+    <ul>
+        <li><strong>控制传输与枚举</strong>：解析主机发送至 EP0 的 Setup 控制请求，回复设备描述符以完成设备的枚举与参数配置。</li>
+        <li><strong>带宽测试模块</strong>：对接核心控制器的 IN/OUT 内存接口，负责在 端点 1 (EP1) 上实现读写数据的无损回环 (Loopback)，并在 端点 2 (EP2) 上持续生成高速递增的数据流，供上位机进行带宽极限与压力测试。</li>
+    </ul>
+
+    <h3>3.4 DFU (Device Firmware Upgrade) 背景升级机制</h3>
+    <p>设备的免驱在线升级功能被深度集成在用户逻辑与系统顶层状态机中：</p>
+    <ul>
+        <li><strong>模式切换与软断开 (Soft Detach)</strong>：当主机下发 DFU_DETACH 请求时，<code>UserLayer_top</code> 内的控制模块会拉高 <code>o_dfu_detach_flag</code> 触发信号。顶层逻辑捕获该脉冲后，立即翻转当前操作模式 (<code>dfu_mode</code>)，并启动一个为期 500ms 的强制定时器 (<code>disconnect_timer</code>)。</li>
+        <li><strong>总线重枚举</strong>：在定时器生效的 500ms 期间，系统会拉低 <code>usb_logic_rstn</code> 信号（等同于模拟 VBUS 掉电），迫使 PC 认为设备已被物理拔出。定时器归零后设备自动恢复工作，从而以新模式重新枚举。</li>
+        <li><strong>SPI Flash 写入路由</strong>：设备以 DFU 模式枚举成功后，通过端点接收到的固件数据包将被转化为 SPI 物理时序，定向擦写外部 SPI Flash 的 <code>0x0000000</code> 工作位流区，且过程不会干扰其他扇区的数据。</li>
+    </ul>
+
+    <h2>4. USB_RWBWTest 软件使用说明</h2>
+    <p>USB_RWBWTest_V1.0.1 是一款 USB 设备读写与带宽测试工具，支持简体中文与 English 双语界面。该软件可对设备进行高强度的读写一致性验证与极限吞吐量测试。</p>
+
+    <div class="img-container">
+        <img src="./picture/TOOLS_CN.png" alt="USBRWTest Main Interface" style="max-width: 50%; margin: 10px auto;">
+        <p style="text-align: center; color: #64748b; font-size: 9pt;">图 4-USB_RWBWTest_V1.0.1 软件主界面</p>
+    </div>
+
+    <h3>4.1 设备连接与基础配置</h3>
+    <ul>
+        <li><strong>自动枚举与刷新：</strong> 软件内置后台 USB 硬件拓扑监控线程，支持设备的即插即用与断开自动检测，用户也可点击“刷新设备”按钮手动重载。</li>
+        <li><strong>端点配置：</strong> 默认情况下，软件会自动选择 Interface 0 及对应的底层读写端点(默认端点1用于读写一致性测试，端点2用于读写压力测试)。</li>
+        <li>如需测试特定端点，可勾选“自定义接口/端口”复选框，手动指定 IN 和 OUT 端点。</li>
+    </ul>
+
+    <h3>4.2 读写一致性测试 (Loopback)</h3>
+    <p>一致性测试用于验证 FPGA 端点收发数据的准确性，通过比对下发与回传的数据负载来判断通信链路是否可靠。</p>
+    <ul>
+        <li><strong>测试模式：</strong> 提供 <strong>顺序数据测试</strong>、<strong>固定值测试</strong> (可自定义 Hex 基础值) 以及 <strong>随机数据测试</strong> 三种数据生成策略。</li>
+        <li><strong>数据采样：</strong> 测试开始时，会在左侧日志窗口打印首次成功传输的前 512 字节数据采样（OUT 与 IN 数据的 Hex 预览），并在下方进度条实时显示当前测试进度与成功次数。</li>
+    </ul>
+
+    <div class="img-container">
+        <img src="./picture/loopback_CN.png" alt="Loopback Test" style="max-width: 50%; margin: 10px auto;">
+        <p style="text-align: center; color: #64748b; font-size: 9pt;">图 4-2：读写一致性测试运行状态</p>
+    </div>
+
+    <h3>4.3 带宽与压力测试 (Bandwidth & Stress Test)</h3>
+    <p>带宽与压力测试用于测试当前环境下实际的传输速率。提供实时的速率统计，结果将反馈至界面右侧的 READ/WRITE 动态仪表盘中。</p>
+    <ul>
+        <li><strong>带宽测试 (Bandwidth Test)：</strong> 支持独立的“写入带宽测试”与“读取带宽测试”。用户可通过“测试数据量(x5MB)”微调框设置单次测试的循环次数（默认 100 次，即 500MB 数据量）。</li>
+        <li><strong>压力测试 (Stress Test)：</strong> 提供写入压力、读取压力以及双向读写压力测试 (Dual-thread)。开启后，软件将持续进行无上限的数据吞吐，直至用户手动点击“■ 停止”按钮。</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ 超时警告：</strong><br>
+        如果在测试过程中 IN 端点未接收到数据，日志窗口会高亮提示“超时，IN端点没有接收到数据”，此时请检查所选端点是否支持带宽测试功能。
+    </div>
+
+    <div class="img-container">
+        <img src="./picture/STRESS_TEST_CN.png" alt="Bandwidth Test" style="max-width: 50%; margin: 10px auto;">
+        <p style="text-align: center; color: #64748b; font-size: 9pt;">图 4-3：双向带宽压力测试与实时仪表盘</p>
+    </div>
+   
+    <h2>5. 功能测试 —— DFU 背景升级</h2>
+    <p>本系统采用 Multi-Boot 多重启动架构，为了实现安全的远程升级与数据隔离，系统将外部 W25Q128JVSIQ SPI Flash (16MB) 的物理地址进行了如下映射：</p>
+    <ul>
+        <li><code>0x000000</code>：工作位流 (Working Image)，DFU 协议的默认下载与擦写目标地址。</li>
+        <li><code>0x300000</code>：黄金位流 (Golden Image)，出厂固化的安全备份区域。该地址可以自定义。</li>
+    </ul>
+
+    <h3>5.1 FPGA芯片配置参数预置</h3>
+    <div class="warning-box">
+        <strong>⚠️ 开发板版本警告：</strong><br>
+        <code>DK_USB_GW5AT-LV60UG225_V1.0/V1.1开发板</code> <strong>VQPS 引脚默认下拉接地</strong>，因此此时无法进行 黄金地址写入操作。 请直接跳转至 <code> 5.4 使用 dfu-util 执行升级测试 </code>
+    </div>
+    <div class="warning-box">
+        <strong>⚠️ 硬件操作警告：</strong><br>
+        下述配置参数中的 <strong>黄金位流地址 (Golden Boot Address)</strong> 与 <strong>AES 解密密钥</strong> 底层基于 eFuse 机制，存在<strong>不可逆的单向写入限制</strong>（某一位一旦由 <code>0</code> 修改为 <code>1</code> 将永远无法恢复）。操作前请务必仔细核对！<br>
+        此外，执行此类参数写入操作前，<strong>必须先为开发板的 VQPS 引脚提供稳定的 1.8V 供电</strong>，然后才能进行后续的软配置写入，否则将导致操作失败。<br>
+    </div>
+
+    <div class="img-container">
+        <img src="./picture/board.jpg" alt="Board" style="max-width: 50%; margin: 10px auto;">
+    </div>
+    <div class="img-container">
+        <img src="./picture/Vefuse.png" alt="eFuse" style="max-width: 60%; margin: 10px auto;">
+    </div>
+
+    <p><strong>黄金位流地址设定</strong>：</p>
+    <ol>
+        <li>打开 Programmer，选中当前器件，右键选中 <strong>“MSPI 2nd Boot Address”</strong> 选项，进入配置页面。</li>
+        <li>点击 "Read"，读取当前已配置的启动地址。显示为 <code>0x800_000</code>，但实际上默认地址为 <code>0x000_000</code>。</li>
+        <li>在输入框填写目标启动地址（此工程应改为 <code>0x300_000</code>），点击“Write”按钮。若提示“Write Success”，则表示写入成功。</li>
+        <li>再次点击“Read”，确认显示地址与写入值一致，确保配置生效。</li>
+    </ol>
+
+    <div class="img-container">
+        <img src="./picture/MSPI_2nd_AD.png" alt="MSPI" style="max-width: 50%; margin: 10px auto;">
+    </div>
+
+    <p><strong>AES 密钥设定</strong>：</p>
+    <p>Arora V 家族 FPGA 产品支持比特流数据加密，采用 128bit 的 AES 加密算法。用户可以在编译时加入 AES 密钥。器件上电后将会识别含有预设 AES 密钥的加密位流以及未加密的位流，并自动跳过 AES 密钥不匹配的加密位流。</p>
+    <ol>
+        <li><strong>输入加密密钥</strong>：菜单栏选择 "Project - Configuration"，点击 “BitStream”，勾选“Enable Encryption”并输入密钥值，如下图所示。此后进行编译时，Gowin EDA 会自动将该密钥信息置入到位流文件中。</li>
+    </ol>
+
+    <div class="img-container">
+        <img src="./picture/cfg_key.png" alt="Config Key" style="max-width: 50%; margin: 10px auto;">
+    </div>
+
+    <ol start="2">
+        <li><strong>设置解密密钥</strong>：打开 Programmer，选中当前器件，右键选中“Security Key Setting”选项。在弹出界面中输入加密的密钥值，单击“Write”将其固化到 FPGA 中。如下图所示：</li>
+    </ol>
+
+    <div class="img-container">
+        <img src="./picture/key.png" alt="Key Setting" style="max-width: 60%; margin: 10px auto;">
+    </div>
+
+    <p><em>更具体的说明可见《UG714-Arora V 25K FPGA Products Programming and Configuration Guide》 —— 4.3 Security</em></p>
+
+    <h3>5.2 黄金位流 (Golden Image) 与 工作位流 （Working Image） 预置</h3>
+    <p>为了保证防砖机制能够正常介入，在交付前或首次测试前，需先通过硬件下载器将稳定版本的 <code>golden_DFU_V1.0.fs</code> 固件烧录至黄金地址。</p>
+    <ol>
+        <li>打开 Gowin Programmer，配置 Access Mode 为 <code>External Flash Mode Arora V</code>。</li>
+        <li>在高级设置中，将烧录的起始地址 (Start Address) 手动修改为 <code>0x300000</code>。</li>
+        <li>选择预先编译好的 Golden Image（仅 DFU 文件）位流文件并执行烧录。</li>
+        <li>在高级设置中，将烧录的起始地址 (Start Address) 手动修改为 <code>0x000000</code>。</li>
+        <li>选择预先编译好的 Working Image 位流文件并执行烧录。</li>
+    </ol>
+
+    <h3>5.3 环境配置</h3>
+
+    <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+    <p style="margin: 0; color: #2e7d32; font-weight: 500;">
+        ✅ 当前 DFU 升级功能已实现免驱支持，设备连接后 Windows 系统将自动加载驱动，无需额外配置，即连即用。
+    </p>
+    </div>
+
+    <p><strong>注：</strong>若使用早期固件版本（V1.0）或遇到自动识别异常时，可参考以下手动驱动配置步骤：</p>
+    <ol>
+        <li><strong>连接设备</strong>：将 FPGA 开发板通过 USB 数据线连接至电脑，右键以管理员身份运行 Zadig。</li>
+        <li><strong>枚举设备</strong>：在顶部菜单栏依次点击 <code>Options</code> → <code>List All Devices</code>，确保工具能读取当前所有的 USB 物理设备。</li>
+        <li><strong>选择目标硬件</strong>：在主界面的下拉列表中选中您的 DFU 设备（标识默认为 <strong>DFU Runtime(interface 0/3)</strong>）。请务必核对设备名称以免误操作。</li>
+        <li><strong>指定驱动协议</strong>：在右侧的 Target 驱动选择框中，通过箭头切换并选择 <strong>WinUSB(v6.x.xxxx)</strong>。</li>
+    </ol>
+
+    <div class="img-container">
+        <img src="./picture/zadig_dfu.png" alt="Zadig" style="max-width: 60%; margin: 10px auto;">
+    </div>
+
+    <h3>5.4 使用 dfu-util 执行升级测试</h3>
+    <p>本节主要验证通过 DFU (Device Firmware Upgrade) 接口向开发板外部的 SPI Flash 写入新固件的功能。测试提供了两种可选方式：使用图形化配套软件，或使用开源命令行工具 <code>dfu-util</code>。</p>
+
+    <h4>5.4.1 方法一：使用图形界面 (GUI) 工具执行升级</h4>
+    <p>本次测试使用配套 <code>tools</code> 文件夹中的 <strong>CDC+HID+DFU测试软件.exe</strong> 向开发板写入新固件。</p>
+
+    <p><strong>测试环境与注意事项</strong></p>
+    <ul>
+        <li><strong>环境依赖</strong>：请确保该测试软件与 <code>dfu-util.exe</code> 以及 <code>libusb-1.0.dll</code> 位于同一文件夹目录下，或者已将 <code>dfu-util</code> 的路径成功添加至系统环境变量中，否则将导致下载功能无法调用。</li>
+        <li><strong>连接状态</strong>：在进行 DFU 升级测试时，软件界面的 VID/PID 以及当前的“设备连接状态”无需特别关注。</li>
+    </ul>
+
+    <p><strong>升级操作步骤</strong></p>
+    <ol>
+        <li><strong>选择固件</strong>：点击“<strong>选择固件文件</strong>”按钮，在弹出的窗口中选择您希望下载的 <code>.bin</code> 固件文件。</li>
+        <li><strong>进入 DFU 模式</strong>：点击“<strong>执行 Detach</strong>”按钮，触发设备切换至 DFU 模式。</li>
+        <li><strong>下载固件</strong>：点击“<strong>执行 Download</strong>”按钮，软件将开始把 <code>.bin</code> 文件下载至开发板的 <code>spi_flash</code> 中。此时，下方的输出窗口会实时显示实际的下载进度。</li>
+        <li><strong>重启生效</strong>：下载进度完成后，对开发板<strong>重新上电</strong>（断电后重新连接），设备即可加载并运行新烧录的固件。</li>
+    </ol>
+
+    <div class="img-container">
+        <img src="./picture/dfu_test_CN.png" alt="DFU Test" style="max-width: 50%; margin: 10px auto;">
+    </div>
+
+    <p><strong>测试固件说明</strong></p>
+    <p>附件的 <code>DFU_bin</code> 文件夹中提供了以下几个固件供测试使用：</p>
+    <ul>
+        <li><code>5A60_USB2_HIFI+HID+DFU.bin</code> —— 在DK_USB_GW5AT60-LV60UG225_V1.0开发板上运行的 USB2.0 复合设备，包含 HIFI+HID+DFU功能。</li>
+        <li><code>5A60_USB3_BULK+DFU_MSOS2.0_V1.1.bin</code> —— 在DK_USB_GW5AT60-LV60UG225_V1.0开发板上运行的 USB3.2 复合设备，包含 BULK带宽测试+DFU功能。</li>
+    </ul>
+
+    <div class="warning-box">
+        <strong>⚠️ 重要提示：</strong><br>
+        以上固件均保留了 DFU 升级功能。这意味着在烧录这几个固件并重新上电后，您依然可以继续使用该软件进行下一次的固件烧录。
+    </div>
+
+    <h4>5.4.2 方法二：使用 dfu-util 命令行执行升级</h4>
+    <p>您也可以使用跨平台的开源命令行工具 <code>dfu-util</code> 进行测试。请确保已将 <code>dfu-util</code> 添加至系统的环境变量中。</p>
+
+    <p><strong>步骤 1：准备固件位流文件</strong></p>
+    <p>在工程综合工具中，右键打开 Configuration —— BitStream —— General —— Bitstream Format，选择 <strong>Binary</strong>。编译完成后，软件会在 <code>pnr</code> 文件夹中生成对应的 <code>.fs</code>、<code>.bin</code> 以及 <code>.binx</code> 固件文件。准备好需要更新的 <code>.bin</code> 文件（例如命名为 <code>update_v2.bin</code>）。</p>
+
+    <div class="img-container">
+        <img src="./picture/bin.png" alt="Bin File" style="max-width: 60%; margin: 10px auto;">
+    </div>
+
+    <p><strong>步骤 2：枚举并识别设备</strong></p>
+    <p>打开命令行终端 (CMD / PowerShell)，输入以下命令检查设备是否被正确识别：</p>
+    <pre><code>dfu-util -l</code></pre>
+    <p>若驱动正常，终端将列出当前支持 DFU 的设备，并显示对应的 VID 与 PID（如 <code>33AA:1800</code>）。</p>
+
+    <p><strong>步骤 3：下发新固件</strong></p>
+    <p>在终端中执行以下命令，触发设备从 APP 模式切换至 DFU 下载模式：</p>
+    <pre><code>dfu-util -e</code></pre>
+    <p>随后，执行以下命令发起下载：</p>
+    <pre><code>dfu-util -d 33AA:1800 -a 0 -D update_v2.bin</code></pre>
+    
+    <p><strong>参数说明：</strong></p>
+    <ul>
+        <li><code>-d 33AA:1800</code>：指定目标设备的 VID:PID。</li>
+        <li><code>-a 0</code>：指定更新目标为 Alt Setting 0，底层逻辑会自动映射至 Flash 的 <code>0x000000</code> 地址。</li>
+        <li><code>-D</code>：指令为 Download（下载指定固件至设备）。</li>
+    </ul>
+
+    <div class="img-container">
+        <img src="./picture/cmd.png" alt="CMD" style="max-width: 50%; margin: 10px auto;">
+    </div>
+
+    <p><strong>步骤 4：背景升级监控与状态说明</strong></p>
+    <p>执行下载命令后，终端会出现下载进度条。此时，USB 控制器接收数据流，并驱动 SPI Flash 控制器对 <code>0x000000</code> 区域执行擦写操作。</p>
+    
+    <div class="info-box">
+        <strong>💡 复合功能并发说明：</strong><br>
+        当设备进入 DFU 模式时，将会被系统视为一个纯 DFU 设备，暂时失去原本的 工作 功能。DFU 下载完成后（进度达到 100% 且提示 “Done”），设备会自动恢复至 APP 模式，此时即可重新测试 工作 功能。但请注意，此时运行的仍是旧逻辑，需等待下一次重新上电，FPGA 才会真正从 <code>0x000000</code> 加载新固件。
+    </div>
+
+    <p><strong>步骤 5：复位与多重启动验证 (防砖测试)</strong></p>
+    <ol>
+        <li><strong>正常启动验证</strong>：确认下载完成后，断电并重新上电，观察系统是否按新版本固件逻辑正常运行。</li>
+        <li><strong>防砖回退验证 (破坏性测试)</strong>：您可以尝试下载 AES 密钥与当前不符或已损坏的 bin 位流文件，以模拟固件损坏的极端情况。重新上电后，Arora-V 芯片在校验 <code>0x000000</code> 失败时，会自动触发多重启动机制，回退并加载位于 <code>0x300000</code> 备份地址的黄金位流 (Golden Image)。系统依靠黄金位流成功启动后，您可以重新使用 DFU 对 <code>0x000000</code> 地址覆盖下载正确的位流文件，以此验证设备的自恢复能力。</li>
+    </ol>
+
+
+</body>
+</html>

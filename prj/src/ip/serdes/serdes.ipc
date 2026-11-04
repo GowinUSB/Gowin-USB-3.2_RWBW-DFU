@@ -1,0 +1,39 @@
+[General]
+ipc_version=4
+target_device=gw5at60b-007
+type=Serdes
+version=1.2
+
+[Config]
+LANG=0
+Synthesis_tool=GowinSynthesis
+file=serdes
+global_reset_enable=true
+module=SerDes_Top
+
+[All_access]
+Q0_LANE1_RX=Q0_LANE1_RX -> Q0_MUX0 -> Q0_REFCLK1
+Q0_LANE1_TX=Q0_LANE1_TX -> Q0_QPLL0 -> Q0_MUX0 -> Q0_REFCLK1
+Q0_LANE0_RX=Q0_LANE0_RX -> Q0_MUX0 -> Q0_REFCLK1
+Q0_LANE0_TX=Q0_LANE0_TX -> Q0_QPLL0 -> Q0_MUX0 -> Q0_REFCLK1
+
+[USB%203.2%20PHY%3Ausb3_2_phy%3AUSB3_2_PHY_Top]
+LANG=0
+Lane0=true
+Lane1=true
+Lane2=false
+Lane3=false
+Lane_Operation_Mode=Dual Lane
+Line_Rate=10
+Loopback_Mode=OFF
+PLL_Selection=QPLL0
+Quad_Selection=Q0
+Reference_CLK_Frequency=200
+Reference_CLK_Source=Q0 REFCLK1
+Synthesis_tool=GowinSynthesis
+USB_Operating_Mode=USB3.2 Gen2x1
+file=usb3_2_phy
+module=USB3_2_PHY_Top
+target_device=gw5at60b-007
+type=usb3_2_phy
+version=1.0

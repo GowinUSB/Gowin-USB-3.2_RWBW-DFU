@@ -1,0 +1,320 @@
+//Copyright (C)2014-2026 Gowin Semiconductor Corporation.
+//All rights reserved.
+
+
+1. PnR Messages
+
+  <Report Title>: PnR Report
+  <Design File>: E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\gwsynthesis\prj.vg
+  <Physical Constraints File>: E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\constrs\top.cst
+  <Timing Constraints File>: E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\constrs\top.sdc
+  <Tool Version>: V1.9.12.04 (64-bit)
+  <Part Number>: GW5AT-LV60UG225C2/I1
+  <Device>: GW5AT-60
+  <Device Version>: B
+  <Created Time>:Wed Nov  4 15:46:44 2026
+
+
+2. PnR Details
+
+  Running placement:
+    Placement Phase 0: CPU time = 0h 0m 5s, Elapsed time = 0h 0m 5s
+    Placement Phase 1: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
+    Placement Phase 2: CPU time = 0h 0m 47s, Elapsed time = 0h 0m 47s
+    Placement Phase 3: CPU time = 0h 1m 10s, Elapsed time = 0h 1m 10s
+    Total Placement: CPU time = 0h 2m 3s, Elapsed time = 0h 2m 3s
+ Running routing:
+    Routing Phase 0: CPU time = 0h 0m 0.01s, Elapsed time = 0h 0m 0.01s
+    Routing Phase 1: CPU time = 0h 4m 38s, Elapsed time = 0h 4m 38s
+    Routing Phase 2: CPU time = 0h 0m 0.332s, Elapsed time = 0h 0m 0.332s
+    Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
+    Total Routing: CPU time = 0h 4m 38s, Elapsed time = 0h 4m 38s
+ Generate output files:
+    CPU time = 0h 0m 6s, Elapsed time = 0h 0m 6s
+
+ Total Time and Memory Usage: CPU time = 0h 6m 47s, Elapsed time = 0h 6m 47s, Peak memory usage = 1948MB
+
+
+3. Resource Usage Summary
+
+  --------------------------------------------------------------------------------
+  Resources                   | Usage                               | Utilization
+  --------------------------------------------------------------------------------
+  Logic                       | 24608/59904                         |  42%
+    --LUT,ALU,ROM16           | 24104(23408 LUT, 696 ALU, 0 ROM16)  | -
+    --SSRAM(RAM16)            | 84                                  | -
+  Register                    | 14726/60228                         |  25%
+    --Logic Register as Latch | 0/59904                             |  0%
+    --Logic Register as FF    | 14721/59904                         |  25%
+    --I/O Register as Latch   | 0/324                               |  0%
+    --I/O Register as FF      | 5/324                               |  2%
+  CLS                         | 16767/29952                         |  56%
+  I/O Port                    | 24/113                              |  22%
+  I/O Buf                     | 12                                  | -
+    --Input Buf               | 4                                   | -
+    --Output Buf              | 6                                   | -
+    --Inout Buf               | 2                                   | -
+  BSRAM                       | 68/118                              | 58%
+    --SP                      | 2
+    --SDPB                    | 48
+    --SDPX9B                  | 14
+    --pROM                    | 4
+  DSP                         | 1/118                               | <1%
+    --MULTALU27X18            | 1
+  GTR12_QUADA                 | 1/1                                 | 100%
+  GTR12_UPARA                 | 1/1                                 | 100%
+  ================================================================================
+
+
+
+4. I/O Bank Usage Summary
+
+  --------------------------------------
+  I/O Bank  | Usage       | Utilization 
+  --------------------------------------
+  bank 1   | 0/8         | 0%          
+  bank 2   | 0/6         | 0%          
+  bank 3   | 6/8         | 75%         
+  bank 4   | 0/6         | 0%          
+  bank 5   | 12/20       | 60%         
+  bank 8   | 3/16        | 19%         
+  bank 9   | 0/36        | 0%          
+  bank 10  | 3/5         | 60%         
+  bank 11  | 0/4         | 0%          
+  bank 12  | 0/4         | 0%          
+  ======================================
+
+
+5. Clock Resource Usage Summary
+
+  ------------------------------------------
+  Clock Resource| Usage         | Utilization 
+  ------------------------------------------
+  PRIMARY       | 8/8           | 100%
+  LW            | 8/8           | 100%
+  GCLK_PIN      | 4/28          | 15%
+  ==========================================
+
+
+6. Global Clock Signals
+
+  -------------------------------------------
+  Signal         | Global Clock   | Location
+  -------------------------------------------
+  sys_clk        | PRIMARY        |  BR BL
+  fclk_d         | PRIMARY        |  TR BL
+  cnt4_clr       | PRIMARY        |  BR BL
+  phy_resetn_o   | PRIMARY        |  TR BL
+  pclk           | PRIMARY        |  TR BR BL
+  SerDes_Top_inst/q0_lane0_fabric_rx_clk| PRIMARY        |  BL
+  SerDes_Top_inst/upar_arbiter_wrap_SerDes_Top_inst_drp_clk_o[0]| PRIMARY        |  BL
+  USB3_2_Device_Controller_Top_inst/usb3_2_device_controller_inst/iu3l/aligned_dpp_data_val_d0| PRIMARY        |  BL
+  attached_Z     | LW             |  -
+  SerDes_Top_inst/USB3_2_PHY_Top_inst/Inst_usb3_2_phy/Inst_usb3_1_phy/internel_resetn| LW             |  -
+  SerDes_Top_inst/USB3_2_PHY_Top_inst/Inst_usb3_2_phy/Inst_usb3_1_phy/Inst_datapath/fast_reset_n| LW             |  -
+  SerDes_Top_inst/USB3_2_PHY_Top_inst/Inst_usb3_2_phy/Inst_usb3_1_phy/Inst_datapath/rx_reset_n| LW             |  -
+  USB3_2_Device_Controller_Top_inst/usb3_2_device_controller_inst/prot_rst_n_d1| LW             |  -
+  USB3_2_Device_Controller_Top_inst/usb3_2_device_controller_inst/link_rst_n_d0| LW             |  -
+  USB3_2_Device_Controller_Top_inst/usb3_2_device_controller_inst/iu3l/append_rst_n| LW             |  -
+  USB3_2_Device_Controller_Top_inst/usb3_2_device_controller_inst/iu3r/n340_7| LW             |  -
+  ===========================================
+
+
+7. Pinout by Port Name
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Port Name      | Diff Pair | Loc./Bank     | Constraint | Dir.  | Site     | CFG             | IO Type    | Drive | Pull Mode | PCI Clamp | Hysteresis | Open Drain | Slew Rate | Vref       | Single Resistor | Diff Resistor | BankVccio  | Pull Strength | Ctle          | Threshold Offset | ADC_INPUT    
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+fclk           | -         | H5/10         | Y          | in    | IOL48[A] | GCLKT_17        | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus2         
+sys_clk_p      | sys_clk_n | K5/10         | Y          | in    | IOL50[A] | GCLKT_16        | LVCMOS33D  | OFF   | NONE      | OFF       | NONE       | OFF        | SLOW      | OFF        | OFF             | ON            | 3.3        | MEDIUM        | OFF           | OFF           | bus2         
+sys_clk_n      | sys_clk_p | J5/10         | Y          | in    | IOL50[B] | GCLKC_16        | LVCMOS33D  | OFF   | NONE      | OFF       | NONE       | OFF        | SLOW      | OFF        | OFF             | ON            | 3.3        | MEDIUM        | OFF           | OFF           | bus2         
+fusb_int_n     | -         | G15/3         | Y          | in    | IOR17[B] | D10/GCLKC_4     | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus3         
+USB_PULLUP_EN  | -         | K11/5         | Y          | in    | IOR59[B] | -               | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus4         
+USB_TERM_DP    | -         | K12/5         | Y          | in    | IOR61[A] | D07/SDA/RPLL1_T_IN2/RPLL1_T_FB0 | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus4         
+USB_TERM_DN    | -         | K13/5         | Y          | in    | IOR61[B] | RDWR_B/SCL/RPLL1_C_IN2/RPLL1_C_FB0 | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus4         
+USB_RX_DP      | -         | L13/5         | Y          | in    | IOR63[A] | D03/SI/SSI0     | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | -            
+USB_RX_DN      | -         | L14/5         | Y          | in    | IOR63[B] | D04/SSPI_CS_N   | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | -            
+USB_TX_DP      | -         | L15/5         | Y          | in    | IOR66[A] | D05/SO/SSI1/RPLL1_T_IN1/RPLL1_T_FB1 | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus4         
+USB_TX_DN      | -         | M15/5         | Y          | in    | IOR66[B] | D06/SSPI_CLK/RPLL1_C_IN1/RPLL1_C_FB1 | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus4         
+USB_DN         | -         | N14/5         | Y          | in    | IOR70[A] | D08/SSPI_WPN/SSI2 | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | -            
+USB_D          | -         | N15/5         | Y          | in    | IOR70[B] | D09/CLKHOLD_N/SSI3 | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | -            
+USB_DP         | -         | J13/5         | Y          | in    | IOR57[A] | GCLKT_6         | LVCMOS33   | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus4         
+spi_miso       | -         | F12/3         | Y          | in    | IOR9[A]  | D00/DIN/MISO/MI1 | LVCMOS33   | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | -            
+clk_200M_P     | clk_200M_N | L9/8          | Y          | out   | IOB75[A] | -               | LVCMOS33D  | 8     | NONE      | OFF       | OFF        | OFF        | FAST      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | NONE          | bus4         
+clk_200M_N     | clk_200M_P | K8/8          | Y          | out   | IOB75[B] | -               | LVCMOS33D  | 8     | NONE      | OFF       | OFF        | OFF        | FAST      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | NONE          | bus4         
+USB_PWR_EN     | -         | J11/5         | Y          | out   | IOR59[A] | -               | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | NONE          | bus4         
+led1           | -         | R11/8         | Y          | out   | IOB77[B] | BPLL1_C_IN2/BPLL1_C_FB0 | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | NONE          | bus4         
+spi_sclk       | -         | E13/3         | Y          | out   | IOR5[A]  | CCLK            | LVCMOS33   | 8     | UP        | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | NONE          | -            
+spi_cs         | -         | P15/5         | Y          | out   | IOR72[B] | CSO_B/MCS_N/RPLL1_C_IN0 | LVCMOS33   | 8     | UP        | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | NONE          | -            
+spi_mosi       | -         | F13/3         | Y          | out   | IOR9[B]  | CSI_B/MOSI/MI0  | LVCMOS33   | 8     | UP        | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | NONE          | -            
+scl            | -         | G11/3         | Y          | io    | IOR15[B] | D12             | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus3         
+sda            | -         | F11/3         | Y          | io    | IOR15[A] | D11             | LVCMOS33   | 8     | NONE      | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3        | MEDIUM        | NONE          | OFF           | bus3         
+======================================================================================================================================================================================================================
+
+
+
+
+8. All Package Pins
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Loc./Bank| Signal         | Dir.  | Site     | CFG             | IO Type  | Drive | Pull Mode | PCI Clamp | Hysteresis | Open Drain | Slew Rate | Vref       | Single Resistor | Diff Resistor | Bank Vccio | Pull Strength | Ctle          | Threshold Offset | ADC_INPUT    
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+E5/1     | -              | in    | IOT74[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+E6/1     | -              | in    | IOT74[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+E7/1     | -              | in    | IOT76[A] | TPLL0_T_IN0     | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+E8/1     | -              | in    | IOT76[B] | TPLL0_C_IN0     | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+F8/1     | -              | in    | IOT78[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+E9/1     | -              | in    | IOT78[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+F10/1    | -              | in    | IOT89[A] | GCLKT_1/Q0REF_T_IN0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+E10/1    | -              | in    | IOT89[B] | GCLKC_1/Q0REF_C_IN0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+B13/2    | -              | in    | IOT142[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus0         
+A13/2    | -              | out   | IOT142[B] | DOUT            | LVCMOS33 | 8     | UP        | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | bus0         
+B14/2    | -              | in    | IOT144[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus0         
+A14/2    | -              | in    | IOT144[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus0         
+D13/2    | -              | in    | IOT146[A] | TPLL1_T_IN1/TPLL1_T_FB0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus0         
+C14/2    | -              | in    | IOT146[B] | TPLL1_C_IN1/TPLL1_C_FB0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus0         
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+L1/9     | -              | in    | IOB1[A]  | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L2/9     | -              | in    | IOB1[B]  | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M3/9     | -              | in    | IOB3[A]  | BPLL0_T_IN1/BPLL0_T_FB0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L3/9     | -              | in    | IOB3[B]  | BPLL0_C_IN1/BPLL0_C_FB0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M1/9     | -              | in    | IOB5[A]  | BPLL0_T_IN2/BPLL0_T_FB1 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N2/9     | -              | in    | IOB5[B]  | BPLL0_C_IN2/BPLL0_C_FB1 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N1/9     | -              | in    | IOB7[A]  | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+P1/9     | -              | in    | IOB7[B]  | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R2/9     | -              | in    | IOB9[A]  | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+P2/9     | -              | in    | IOB9[B]  | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R3/9     | -              | in    | IOB12[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+P3/9     | -              | in    | IOB12[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+N4/9     | -              | in    | IOB14[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+M4/9     | -              | in    | IOB14[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+P5/9     | -              | in    | IOB16[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N5/9     | -              | in    | IOB16[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M5/9     | -              | in    | IOB18[A] | GCLKT_12        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L5/9     | -              | in    | IOB18[B] | GCLKC_12        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R4/9     | -              | in    | IOB20[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R5/9     | -              | in    | IOB20[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R6/9     | -              | in    | IOB22[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R7/9     | -              | in    | IOB22[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N6/9     | -              | in    | IOB24[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M6/9     | -              | in    | IOB24[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R8/9     | -              | in    | IOB26[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R9/9     | -              | in    | IOB26[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+P7/9     | -              | in    | IOB29[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N7/9     | -              | in    | IOB29[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N8/9     | -              | in    | IOB31[A] | GCLKT_14        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M8/9     | -              | in    | IOB31[B] | GCLKC_14        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+P9/9     | -              | in    | IOB33[A] | GCLKT_15        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N9/9     | -              | in    | IOB33[B] | GCLKC_15        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L6/9     | -              | in    | IOB35[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L7/9     | -              | in    | IOB35[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M9/9     | -              | in    | IOB38[A] | GCLKT_13        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L8/9     | -              | in    | IOB38[B] | GCLKC_13        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L9/8     | clk_200M_P     | out   | IOB75[A] | -               | LVCMOS33D | 8     | NONE      | OFF       | OFF        | OFF        | FAST      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | bus4         
+K8/8     | clk_200M_N     | out   | IOB75[B] | -               | LVCMOS33D | 8     | NONE      | OFF       | OFF        | OFF        | FAST      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | bus4         
+R10/8    | -              | in    | IOB77[A] | BPLL1_T_IN2/BPLL1_T_FB0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R11/8    | led1           | out   | IOB77[B] | BPLL1_C_IN2/BPLL1_C_FB0 | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | bus4         
+P11/8    | -              | in    | IOB79[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N11/8    | -              | in    | IOB79[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N10/8    | -              | in    | IOB81[A] | GCLKT_11        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+M10/8    | -              | in    | IOB81[B] | GCLKC_11        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+R13/8    | -              | in    | IOB85[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+R12/8    | -              | in    | IOB85[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+N12/8    | -              | in    | IOB87[A] | GCLKT_10        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M11/8    | -              | in    | IOB87[B] | GCLKC_10        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L10/8    | -              | in    | IOB89[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+K10/8    | -              | in    | IOB89[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+R14/8    | -              | in    | IOB91[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+P13/8    | -              | in    | IOB91[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+F5/11    | -              | in    | IOL41[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+G5/11    | -              | in    | IOL41[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+K4/11    | -              | in    | IOL45[A] | GCLKT_18        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+K3/11    | -              | in    | IOL45[B] | GCLKC_18        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+H5/10    | fclk           | in    | IOL48[A] | GCLKT_17        | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+H6/10    | -              | in    | IOL48[B] | GCLKC_17        | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+K5/10    | sys_clk_p      | in    | IOL50[A] | GCLKT_16        | LVCMOS33D | OFF   | NONE      | OFF       | NONE       | OFF        | SLOW      | OFF        | OFF             | ON            | 3.3   | MEDIUM        | OFF           | OFF           | bus2         
+J5/10    | sys_clk_n      | in    | IOL50[B] | GCLKC_16        | LVCMOS33D | OFF   | NONE      | OFF       | NONE       | OFF        | SLOW      | OFF        | OFF             | ON            | 3.3   | MEDIUM        | OFF           | OFF           | bus2         
+K1/10    | -              | in    | IOL66[A] | PUDC_B/LPLL1_T_IN1/LPLL1_T_FB0 | LVCMOS33 | OFF   | DOWN      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus2         
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C15/12   | -              | in    | IOR1[A]  | TCK             | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+B15/12   | -              | in    | IOR1[B]  | TDI             | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+E15/12   | -              | in    | IOR3[A]  | TMS             | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+D15/12   | -              | out   | IOR3[B]  | TDO             | LVCMOS33 | 8     | UP        | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | -            
+E13/3    | spi_sclk       | out   | IOR5[A]  | CCLK            | LVCMOS33 | 8     | UP        | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | -            
+E14/3    | -              | in    | IOR5[B]  | MODE0           | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+F12/3    | spi_miso       | in    | IOR9[A]  | D00/DIN/MISO/MI1 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+F13/3    | spi_mosi       | out   | IOR9[B]  | CSI_B/MOSI/MI0  | LVCMOS33 | 8     | UP        | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | -            
+F11/3    | sda            | io    | IOR15[A] | D11             | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus3         
+G11/3    | scl            | io    | IOR15[B] | D12             | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus3         
+F15/3    | -              | in    | IOR17[A] | MODE1/GCLKT_4   | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus3         
+G15/3    | fusb_int_n     | in    | IOR17[B] | D10/GCLKC_4     | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus3         
+G13/4    | -              | in    | IOR20[A] | D01/MI2         | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+G14/4    | -              | in    | IOR20[B] | D02/MI3         | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+H15/4    | -              | in    | IOR34[A] | D13             | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+J15/4    | -              | in    | IOR34[B] | EMCCLK          | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+G12/4    | -              | in    | IOR36[A] | GCLKT_5/RPLL0_T_IN1/RPLL0_T_FB0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+H12/4    | -              | in    | IOR36[B] | GCLKC_5/RPLL0_C_IN1/RPLL0_C_FB0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+H11/5    | -              | in    | IOR41[A] | D14/GCLKT_7     | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+H10/5    | -              | in    | IOR41[B] | D15/GCLKC_7     | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+H13/5    | -              | in    | IOR47[A] | DONE            | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+K15/5    | -              | in    | IOR56[A] | RECONFIG_N      | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+J13/5    | USB_DP         | in    | IOR57[A] | GCLKT_6         | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+J14/5    | -              | in    | IOR57[B] | GCLKC_6         | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+J11/5    | USB_PWR_EN     | out   | IOR59[A] | -               | LVCMOS33 | 8     | NONE      | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | bus4         
+K11/5    | USB_PULLUP_EN  | in    | IOR59[B] | -               | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+K12/5    | USB_TERM_DP    | in    | IOR61[A] | D07/SDA/RPLL1_T_IN2/RPLL1_T_FB0 | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+K13/5    | USB_TERM_DN    | in    | IOR61[B] | RDWR_B/SCL/RPLL1_C_IN2/RPLL1_C_FB0 | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L13/5    | USB_RX_DP      | in    | IOR63[A] | D03/SI/SSI0     | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+L14/5    | USB_RX_DN      | in    | IOR63[B] | D04/SSPI_CS_N   | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+L15/5    | USB_TX_DP      | in    | IOR66[A] | D05/SO/SSI1/RPLL1_T_IN1/RPLL1_T_FB1 | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M15/5    | USB_TX_DN      | in    | IOR66[B] | D06/SSPI_CLK/RPLL1_C_IN1/RPLL1_C_FB1 | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+L12/5    | -              | in    | IOR68[A] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+M13/5    | -              | in    | IOR68[B] | -               | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | bus4         
+N14/5    | USB_DN         | in    | IOR70[A] | D08/SSPI_WPN/SSI2 | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+N15/5    | USB_D          | in    | IOR70[B] | D09/CLKHOLD_N/SSI3 | LVCMOS33 | OFF   | NONE      | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+P14/5    | -              | in    | IOR72[A] | READY/RPLL1_T_IN0 | LVCMOS33 | OFF   | UP        | OFF       | ON         | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | OFF           | -            
+P15/5    | spi_cs         | out   | IOR72[B] | CSO_B/MCS_N/RPLL1_C_IN0 | LVCMOS33 | 8     | UP        | OFF       | OFF        | OFF        | SLOW      | OFF        | OFF             | OFF           | 3.3   | MEDIUM        | NONE          | NONE          | -            
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+F3/MIPI  | -              | inout | M0_CKN  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+G3/MIPI  | -              | inout | M0_CKP  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+J3/MIPI  | -              | inout | M0_D0N  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+J4/MIPI  | -              | inout | M0_D0P  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+H3/MIPI  | -              | inout | M0_D1N  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+H4/MIPI  | -              | inout | M0_D1P  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+E3/MIPI  | -              | inout | M0_D2N  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+F4/MIPI  | -              | inout | M0_D2P  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+C2/MIPI  | -              | inout | M0_D3N  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+C1/MIPI  | -              | inout | M0_D3P  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+D1/MIPI  | -              | inout | M1_D0A  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+E2/MIPI  | -              | inout | M1_D0B  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+E1/MIPI  | -              | inout | M1_D0C  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+F1/MIPI  | -              | inout | M1_D1A  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+G1/MIPI  | -              | inout | M1_D1B  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+G2/MIPI  | -              | inout | M1_D1C  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+H1/MIPI  | -              | inout | M1_D2A  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+J1/MIPI  | -              | inout | M1_D2B  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+J2/MIPI  | -              | inout | M1_D2C  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+A3/Q0    | -              | in    | Q0_LN0_RXM_I  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+B3/Q0    | -              | in    | Q0_LN0_RXP_I  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+C4/Q0    | -              | out   | Q0_LN0_TXM_O  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+D4/Q0    | -              | out   | Q0_LN0_TXP_O  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+A7/Q0    | -              | in    | Q0_LN1_RXM_I  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+B7/Q0    | -              | in    | Q0_LN1_RXP_I  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+C6/Q0    | -              | out   | Q0_LN1_TXM_O  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+D6/Q0    | -              | out   | Q0_LN1_TXP_O  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+A9/Q0    | -              | in    | Q0_LN2_RXM_I  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+B9/Q0    | -              | in    | Q0_LN2_RXP_I  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+C8/Q0    | -              | out   | Q0_LN2_TXM_O  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+D8/Q0    | -              | out   | Q0_LN2_TXP_O  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+A11/Q0   | -              | in    | Q0_LN3_RXM_I  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+B11/Q0   | -              | in    | Q0_LN3_RXP_I  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+C12/Q0   | -              | out   | Q0_LN3_TXM_O  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+D12/Q0   | -              | out   | Q0_LN3_TXP_O  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+A5/Q0    | -              | in    | Q0_REFCLKM_0  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+C10/Q0   | -              | in    | Q0_REFCLKM_1  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+B5/Q0    | -              | in    | Q0_REFCLKP_0  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+D10/Q0   | -              | in    | Q0_REFCLKP_1  | -               | -          | -     | -         | -         | -          | -          | -         | -          | -               | -             | -          | -             | -             | -             | -            
+===========================================================================================================================================================================================
+
+

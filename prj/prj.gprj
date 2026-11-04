@@ -1,0 +1,52 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW5AT-60B" pn="GW5AT-LV60UG225C2/I1">gw5at60b-007</Device>
+    <FileList>
+        <File path="src/include/audio_pkg.sv" type="file.verilog" enable="1"/>
+        <File path="src/include/cdc_pkg.sv" type="file.verilog" enable="1"/>
+        <File path="src/include/dfu_pkg.sv" type="file.verilog" enable="1"/>
+        <File path="src/include/msos_pkg.sv" type="file.verilog" enable="1"/>
+        <File path="src/include/usb_std_pkg.sv" type="file.verilog" enable="1"/>
+        <File path="src/ip/gowin_pll/gowin_pll.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/gowin_pll/gowin_pll_mod.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/i2c_master/i2c_master.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/pll_init.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/serdes/serdes.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/serdes/upar_arbiter/upar_arbiter.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/serdes/usb3_2_phy/usb3_2_phy.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/USB3_2_Device_Controller_Top.sv" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/transfer_in_mem.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/transfer_out_mem.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_2_device_controller.sv" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_const.vh" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_ep.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_ep0.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_ep0in_ram.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_ltssm_device.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_macro_define.v" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_protocol.sv" type="file.verilog" enable="1"/>
+        <File path="src/rtl/iic/gw_i2c_master.v" type="file.verilog" enable="1"/>
+        <File path="src/rtl/iic/iic_controller.v" type="file.verilog" enable="1"/>
+        <File path="src/rtl/iic/master_sram_iic.v" type="file.verilog" enable="1"/>
+        <File path="src/rtl/top.sv" type="file.verilog" enable="1"/>
+        <File path="src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv" type="file.verilog" enable="1"/>
+        <File path="src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_cdc_handler.sv" type="file.verilog" enable="0"/>
+        <File path="src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_dfu_handler.sv" type="file.verilog" enable="1"/>
+        <File path="src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_ep0_core.sv" type="file.verilog" enable="1"/>
+        <File path="src/rtl/usb3_2_user_layer/EP1_loopback.v" type="file.verilog" enable="1"/>
+        <File path="src/rtl/usb3_2_user_layer/EP2_speed.v" type="file.verilog" enable="1"/>
+        <File path="src/rtl/usb3_2_user_layer/UserLayer_top.sv" type="file.verilog" enable="1"/>
+        <File path="src/rtl/usb3_2_user_layer/spi_flash_controller/spi_flash_controller.sv" type="file.verilog" enable="1"/>
+        <File path="src/rtl/usb3_2_user_layer/spi_flash_controller/spi_phy.sv" type="file.verilog" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_link.vg" type="file.netlist" enable="1"/>
+        <File path="src/ip/usb3_2_device_controller/usb3_pipe.vg" type="file.netlist" enable="1"/>
+        <File path="src/constrs/top.cst" type="file.cst" enable="1"/>
+        <File path="src/constrs/top.sdc" type="file.sdc" enable="1"/>
+        <File path="src/prj.rao" type="file.gao" enable="0"/>
+    </FileList>
+</Project>

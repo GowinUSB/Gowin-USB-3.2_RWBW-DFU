@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-synthesis-project>
+<Project>
+    <Version>beta</Version>
+    <Device id="GW5AT-60B" package="UBGA225" speed="2" partNumber="GW5AT-LV60UG225C2/I1"/>
+    <FileList>
+        <File path="D:/Gowin/Gowin_V1.9.12.04_x64_internal/IDE/ipcore/SERDES_IP/IPlib/USB32PHY/data/usb3_2_phy_top.v" type="verilog"/>
+        <File path="D:/Gowin/Gowin_V1.9.12.04_x64_internal/IDE/ipcore/SERDES_IP/IPlib/USB32PHY/data/usb3_2_phy.v" type="verilog"/>
+    </FileList>
+    <OptionList>
+        <Option type="disable_insert_pad" value="1"/>
+        <Option type="enable_dsrm" value="1"/>
+        <Option type="include_path" value="D:/Gowin/Gowin_V1.9.12.04_x64_internal/IDE/ipcore/SERDES_IP/IPlib/USB32PHY/data"/>
+        <Option type="include_path" value="D:/MXY/project_202609/USB_3_2_PHY/Gowin_USB3_2_GEN2_BULK_Bandwidth_Test_DK_USB_GW5AT_LV60UG225_V1.0/prj/src/serdes/usb3_2_phy/temp/USB3_2_PHY"/>
+        <Option type="output_file" value="usb3_2_phy.vg"/>
+        <Option type="output_template" value="usb3_2_phy_tmp.v"/>
+        <Option type="ram_balance" value="1"/>
+        <Option type="ram_rw_check" value="1"/>
+        <Option type="top_module" value="USB3_2_PHY_Top"/>
+        <Option type="vcc" value="0.9"/>
+        <Option type="vccx" value="3.3"/>
+        <Option type="verilog_language" value="sysv-2017"/>
+    </OptionList>
+</Project>

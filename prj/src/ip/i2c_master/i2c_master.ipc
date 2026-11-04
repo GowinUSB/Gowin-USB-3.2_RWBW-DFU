@@ -1,0 +1,11 @@
+[General]
+ipc_version=4
+file=i2c_master
+module=I2C_MASTER_Top
+target_device=gw5at60b-007
+type=i2c_master
+version=1.0
+
+[Config]
+LANG=0
+Synthesis_tool=GowinSynthesis

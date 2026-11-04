@@ -1,0 +1,170 @@
+{
+    "Device": "GW5AT-60B",
+    "Files": [
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/include/audio_pkg.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/include/cdc_pkg.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/include/dfu_pkg.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/include/msos_pkg.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/include/usb_std_pkg.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/gowin_pll/gowin_pll.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/gowin_pll/gowin_pll_mod.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/i2c_master/i2c_master.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/pll_init.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/serdes.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/upar_arbiter/upar_arbiter.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/usb3_2_phy/usb3_2_phy.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/USB3_2_Device_Controller_Top.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_in_mem_ping_pong.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/transfer_out_mem_ping_pong.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_2_device_controller.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_const.vh",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep0.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ep0in_ram.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_ltssm_device.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_macro_define.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_protocol.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/gw_i2c_master.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/iic_controller.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/master_sram_iic.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_dfu_handler.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_ep0_core.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP1_loopback.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP2_speed.v",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/spi_flash_controller/spi_flash_controller.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/spi_flash_controller/spi_phy.sv",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_link.vg",
+            "Type": "verilog"
+        },
+        {
+            "Path": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/usb3_pipe.vg",
+            "Type": "verilog"
+        }
+    ],
+    "IncludePath": [
+        "C:/Users/hongyi/Desktop/Gowin_USB3_1_CDC_BULK_RefDeign/prj/src/usb3_1_user_layer/descriptors",
+        "C:/Users/hongyi/Desktop/Gowin_USB3_1_CDC_BULK_RefDeign/prj/src/usb3_1_device_controller"
+    ],
+    "LoopLimit": 2000,
+    "ResultFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/impl/temp/rtl_parser.result",
+    "Top": "top",
+    "VerilogStd": "sysv",
+    "VhdlStd": "vhdl_93"
+}

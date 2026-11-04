@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top" Register="89" Alu="53" Lut="74" T_Register="14726(89)" T_Alu="625(53)" T_Lut="23445(74)" T_MULTALU27X18="1(0)" T_Bsram="41(0)" T_Ssram="84(0)">
+ <SubModule name="cc_ctrl_inst" T_Register="191(0)" T_Lut="428(0)">
+  <SubModule name="u_iic_controller" Register="81" Lut="230" T_Register="81(81)" T_Lut="230(230)"/>
+  <SubModule name="u_i2c_master_top" Register="110" Lut="198" T_Register="110(110)" T_Lut="198(198)"/>
+ </SubModule>
+ <SubModule name="SerDes_Top_inst" T_Register="3560(0)" T_Alu="63(0)" T_Lut="6049(0)" T_Bsram="5(0)">
+  <SubModule name="upar_arbiter_wrap_SerDes_Top_inst" Register="149" Lut="237" T_Register="149(149)" T_Lut="237(237)"/>
+  <SubModule name="USB3_2_PHY_Top_inst" Register="3411" Alu="63" Lut="5812" Bsram="5" T_Register="3411(3411)" T_Alu="63(63)" T_Lut="5812(5812)" T_Bsram="5(5)"/>
+ </SubModule>
+ <SubModule name="USB3_2_Device_Controller_Top_inst" T_Register="10165(0)" T_Alu="482(0)" T_Lut="15472(0)" T_MULTALU27X18="1(0)" T_Bsram="30(0)" T_Ssram="84(0)">
+  <SubModule name="usb3_2_device_controller_inst" Register="217" Lut="8" T_Register="10165(217)" T_Alu="482(0)" T_Lut="15472(8)" T_MULTALU27X18="1(0)" T_Bsram="30(0)" T_Ssram="84(0)">
+   <SubModule name="iu3p" Register="158" Lut="112" T_Register="1465(158)" T_Alu="78(0)" T_Lut="2274(112)" T_Bsram="2(0)">
+    <SubModule name="iu3p_5g" Register="283" Alu="20" Lut="697" T_Register="871(283)" T_Alu="44(20)" T_Lut="1504(697)">
+     <SubModule name="iu3rds" Register="326" Alu="3" Lut="533" T_Register="374(326)" T_Alu="3(3)" T_Lut="592(533)">
+      <SubModule name="iu3srx" Register="48" Lut="59" T_Register="48(48)" T_Lut="59(59)"/>
+     </SubModule>
+     <SubModule name="iu3ss" Register="198" Alu="21" Lut="156" T_Register="214(198)" T_Alu="21(21)" T_Lut="215(156)">
+      <SubModule name="iu3srx" Register="16" Lut="59" T_Register="16(16)" T_Lut="59(59)"/>
+     </SubModule>
+    </SubModule>
+    <SubModule name="iu3p_10g" Register="417" Alu="26" Lut="634" T_Register="436(417)" T_Alu="34(26)" T_Lut="658(634)" T_Bsram="2(0)">
+     <SubModule name="sync_fifo_inst" Register="19" Alu="8" Lut="24" Bsram="2" T_Register="19(19)" T_Alu="8(8)" T_Lut="24(24)" T_Bsram="2(2)"/>
+    </SubModule>
+   </SubModule>
+   <SubModule name="iu3lt" Register="352" Alu="75" Lut="1351" T_Register="352(352)" T_Alu="75(75)" T_Lut="1351(1351)"/>
+   <SubModule name="iu3l" Register="4117" Alu="84" Lut="4777" MULTALU27X18="1" Bsram="2" Ssram="45" T_Register="6263(4117)" T_Alu="141(84)" T_Lut="9220(4777)" T_MULTALU27X18="1(1)" T_Bsram="4(2)" T_Ssram="77(45)">
+    <SubModule name="usb3_TxHp_inst" Register="200" Alu="2" Lut="7" Ssram="24" T_Register="200(200)" T_Alu="2(2)" T_Lut="7(7)" T_Ssram="24(24)"/>
+    <SubModule name="usb3_TXLgood_cache" Register="13" Alu="3" Lut="10" Ssram="1" T_Register="13(13)" T_Alu="3(3)" T_Lut="10(10)" T_Ssram="1(1)"/>
+    <SubModule name="usb3_TXLcrd_cache" Register="13" Alu="3" Lut="9" Ssram="1" T_Register="13(13)" T_Alu="3(3)" T_Lut="9(9)" T_Ssram="1(1)"/>
+    <SubModule name="usb3_TXLup_cache" Register="10" Alu="3" Lut="9" Ssram="1" T_Register="10(10)" T_Alu="3(3)" T_Lut="9(9)" T_Ssram="1(1)"/>
+    <SubModule name="usb3_TXLau_cache" Register="12" Alu="3" Lut="9" Ssram="1" T_Register="12(12)" T_Alu="3(3)" T_Lut="9(9)" T_Ssram="1(1)"/>
+    <SubModule name="usb3_TXLgo_cache" Register="12" Alu="3" Lut="9" Ssram="1" T_Register="12(12)" T_Alu="3(3)" T_Lut="9(9)" T_Ssram="1(1)"/>
+    <SubModule name="usb3_TXLpma_cache" Register="12" Alu="3" Lut="9" Ssram="1" T_Register="12(12)" T_Alu="3(3)" T_Lut="9(9)" T_Ssram="1(1)"/>
+    <SubModule name="usb3_TXLbad_cache" Register="11" Alu="3" Lut="9" Ssram="1" T_Register="11(11)" T_Alu="3(3)" T_Lut="9(9)" T_Ssram="1(1)"/>
+    <SubModule name="usb3_TXLtry_cache" Register="10" Alu="3" Lut="9" Ssram="1" T_Register="10(10)" T_Alu="3(3)" T_Lut="9(9)" T_Ssram="1(1)"/>
+    <SubModule name="dpp_crc_append" Register="1173" Lut="680" T_Register="1173(1173)" T_Lut="2126(680)">
+     <SubModule name="iu3cdptx64" Lut="311" T_Lut="311(311)"/>
+     <SubModule name="iu3cdptx56" Lut="269" T_Lut="269(269)"/>
+     <SubModule name="iu3cdptx48" Lut="237" T_Lut="237(237)"/>
+     <SubModule name="iu3cdptx40" Lut="197" T_Lut="197(197)"/>
+     <SubModule name="iu3cdptx32" Lut="178" T_Lut="178(178)"/>
+     <SubModule name="iu3cdptx24" Lut="127" T_Lut="127(127)"/>
+     <SubModule name="iu3cdptx16" Lut="77" T_Lut="77(77)"/>
+     <SubModule name="iu3cdptx8" Lut="50" T_Lut="50(50)"/>
+    </SubModule>
+    <SubModule name="dpp_os_append" Register="149" Lut="303" T_Register="149(149)" T_Lut="303(303)"/>
+    <SubModule name="GEN1_DPP_buff" Register="19" Alu="23" Lut="2" Bsram="2" T_Register="19(19)" T_Alu="23(23)" T_Lut="2(2)" T_Bsram="2(2)"/>
+    <SubModule name="iu3ccw5" Lut="1" T_Lut="1(1)"/>
+    <SubModule name="dpp_buff_inst" Register="512" Alu="8" Lut="474" T_Register="512(512)" T_Alu="8(8)" T_Lut="474(474)"/>
+    <SubModule name="iu3cdprx64" Lut="319" T_Lut="319(319)"/>
+    <SubModule name="iu3cdprx56" Lut="269" T_Lut="269(269)"/>
+    <SubModule name="iu3cdprx48" Lut="232" T_Lut="232(232)"/>
+    <SubModule name="iu3cdprx40" Lut="198" T_Lut="198(198)"/>
+    <SubModule name="iu3cdprx32" Lut="180" T_Lut="180(180)"/>
+    <SubModule name="iu3cdprx24" Lut="131" T_Lut="131(131)"/>
+    <SubModule name="iu3cdprx16" Lut="77" T_Lut="77(77)"/>
+    <SubModule name="iu3cdprx8" Lut="51" T_Lut="51(51)"/>
+   </SubModule>
+   <SubModule name="iu3r" Register="514" Alu="42" Lut="908" T_Register="1868(514)" T_Alu="188(42)" T_Lut="2619(908)" T_Bsram="24(0)" T_Ssram="7(0)">
+    <SubModule name="OUT_ACK_BUF" Register="19" Lut="5" Ssram="5" T_Register="19(19)" T_Lut="5(5)" T_Ssram="5(5)"/>
+    <SubModule name="PING_RSP_BUF" Register="15" Alu="3" Lut="9" Ssram="2" T_Register="15(15)" T_Alu="3(3)" T_Lut="9(9)" T_Ssram="2(2)"/>
+    <SubModule name="usb3_ep0_inst" Register="159" Lut="175" T_Register="355(159)" T_Alu="6(0)" T_Lut="337(175)" T_Bsram="4(0)">
+     <SubModule name="ep0_transfer_out_mem_ping_pong" Lut="7" T_Register="11(0)" T_Lut="28(7)" T_Bsram="2(0)">
+      <SubModule name="GEN_TRANSFER_OUT_MEM[0].transfer_out_mem_inst" Register="11" Lut="21" Bsram="2" T_Register="11(11)" T_Lut="21(21)" T_Bsram="2(2)"/>
+     </SubModule>
+     <SubModule name="ep0_transfer_in_mem_ping_pong" Register="95" Lut="3" T_Register="185(95)" T_Alu="6(0)" T_Lut="134(3)" T_Bsram="2(0)">
+      <SubModule name="GEN_TRANSFER_IN_MEM[0].transfer_in_mem_inst" Register="90" Alu="6" Lut="131" Bsram="2" T_Register="90(90)" T_Alu="6(6)" T_Lut="131(131)" T_Bsram="2(2)"/>
+     </SubModule>
+    </SubModule>
+    <SubModule name="gen_in_ep_ping_pong[1].transfer_in_mem_ping_pong_inst" Register="261" Lut="80" T_Register="455(261)" T_Alu="24(0)" T_Lut="391(80)" T_Bsram="4(0)">
+     <SubModule name="GEN_TRANSFER_IN_MEM[0].transfer_in_mem_inst" Register="97" Alu="12" Lut="156" Bsram="2" T_Register="97(97)" T_Alu="12(12)" T_Lut="156(156)" T_Bsram="2(2)"/>
+     <SubModule name="GEN_TRANSFER_IN_MEM[1].transfer_in_mem_inst" Register="97" Alu="12" Lut="155" Bsram="2" T_Register="97(97)" T_Alu="12(12)" T_Lut="155(155)" T_Bsram="2(2)"/>
+    </SubModule>
+    <SubModule name="gen_in_ep_ping_pong[2].transfer_in_mem_ping_pong_inst" Register="125" Lut="164" T_Register="263(125)" T_Alu="33(0)" T_Lut="415(164)" T_Bsram="12(0)">
+     <SubModule name="GEN_TRANSFER_IN_MEM[0].transfer_in_mem_inst" Register="46" Alu="11" Lut="84" Bsram="4" T_Register="46(46)" T_Alu="11(11)" T_Lut="84(84)" T_Bsram="4(4)"/>
+     <SubModule name="GEN_TRANSFER_IN_MEM[1].transfer_in_mem_inst" Register="46" Alu="11" Lut="83" Bsram="4" T_Register="46(46)" T_Alu="11(11)" T_Lut="83(83)" T_Bsram="4(4)"/>
+     <SubModule name="GEN_TRANSFER_IN_MEM[2].transfer_in_mem_inst" Register="46" Alu="11" Lut="84" Bsram="4" T_Register="46(46)" T_Alu="11(11)" T_Lut="84(84)" T_Bsram="4(4)"/>
+    </SubModule>
+    <SubModule name="gen_out_ep_ping_pong[1].transfer_out_mem_ping_pong" Register="2" Lut="189" T_Register="108(2)" T_Alu="32(0)" T_Lut="323(189)" T_Bsram="4(0)">
+     <SubModule name="GEN_TRANSFER_OUT_MEM[0].transfer_out_mem_inst" Register="53" Alu="16" Lut="67" Bsram="2" T_Register="53(53)" T_Alu="16(16)" T_Lut="67(67)" T_Bsram="2(2)"/>
+     <SubModule name="GEN_TRANSFER_OUT_MEM[1].transfer_out_mem_inst" Register="53" Alu="16" Lut="67" Bsram="2" T_Register="53(53)" T_Alu="16(16)" T_Lut="67(67)" T_Bsram="2(2)"/>
+    </SubModule>
+    <SubModule name="gen_out_ep_ping_pong[2].transfer_out_mem_ping_pong" Register="4" Lut="79" T_Register="139(4)" T_Alu="48(0)" T_Lut="231(79)">
+     <SubModule name="GEN_TRANSFER_OUT_MEM[0].transfer_out_mem_inst" Register="45" Alu="16" Lut="50" T_Register="45(45)" T_Alu="16(16)" T_Lut="50(50)"/>
+     <SubModule name="GEN_TRANSFER_OUT_MEM[1].transfer_out_mem_inst" Register="45" Alu="16" Lut="50" T_Register="45(45)" T_Alu="16(16)" T_Lut="50(50)"/>
+     <SubModule name="GEN_TRANSFER_OUT_MEM[2].transfer_out_mem_inst" Register="45" Alu="16" Lut="52" T_Register="45(45)" T_Alu="16(16)" T_Lut="52(52)"/>
+    </SubModule>
+   </SubModule>
+  </SubModule>
+ </SubModule>
+ <SubModule name="UserLayer_top_inst" T_Register="721(0)" T_Alu="27(0)" T_Lut="1422(0)" T_Bsram="6(0)">
+  <SubModule name="ControlTransfer_inst" Register="291" Lut="413" T_Register="414(291)" T_Alu="17(0)" T_Lut="637(413)" T_Bsram="4(0)">
+   <SubModule name="u_ep0_core" Register="52" Alu="8" Lut="129" Bsram="2" T_Register="52(52)" T_Alu="8(8)" T_Lut="129(129)" T_Bsram="2(2)"/>
+   <SubModule name="gen_dfu.u_dfu_handler" Register="71" Alu="9" Lut="95" Bsram="2" T_Register="71(71)" T_Alu="9(9)" T_Lut="95(95)" T_Bsram="2(2)"/>
+  </SubModule>
+  <SubModule name="EP1_loopback_inst" Register="139" Lut="209" T_Register="139(139)" T_Lut="209(209)"/>
+  <SubModule name="EP2_speed_inst" Register="56" Lut="119" T_Register="56(56)" T_Lut="119(119)"/>
+  <SubModule name="spi_flash_controller" Register="81" Alu="10" Lut="417" Bsram="2" T_Register="112(81)" T_Alu="10(10)" T_Lut="457(417)" T_Bsram="2(2)">
+   <SubModule name="u_spi_phy" Register="31" Lut="40" T_Register="31(31)" T_Lut="40(40)"/>
+  </SubModule>
+ </SubModule>
+</Module>

@@ -1,0 +1,23 @@
+-type SERDES
+-path D:/MXY/project_202609/USB_3_2_PHY/Gowin_USB3_2_GEN2_BULK_Bandwidth_Test_DK_USB_GW5AT_LV60UG225_V1.0/prj/src/serdes/
+-file_type vlg
+-file_name serdes
+-mod_name SerDes_Top
+-series GW5AT
+-device GW5AT-60
+-device_version B
+-package UBGA225
+-part_number GW5AT-LV60UG225C2/I1
+
+
+-global_reset enable
+-protocol_module_name0 USB3_2_PHY_Top
+-USB3_2_PHY_Topprotocol_module_type usb32phy
+-USB3_2_PHY_TopEnableDRP true
+-USB3_2_PHY_TopUSB_Mode Gen2x1
+-USB3_2_PHY_TopLane_Mode DualLane
+-USB3_2_PHY_TopLaneWidth 2
+-USB3_2_PHY_TopChannel0Selection Q0Lane0
+-USB3_2_PHY_TopChannel1Selection Q0Lane1
+-USB3_2_PHY_TopReferenceClockSource Q0REFCLK1
+-USB3_2_PHY_TopPLLSource QPLL0
