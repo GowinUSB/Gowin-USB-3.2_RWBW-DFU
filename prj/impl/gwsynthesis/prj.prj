@@ -4,45 +4,45 @@
     <Version>beta</Version>
     <Device id="GW5AT-60B" package="UBGA225" speed="2" partNumber="GW5AT-LV60UG225C2/I1"/>
     <FileList>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\include\audio_pkg.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\include\cdc_pkg.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\include\dfu_pkg.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\include\msos_pkg.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\include\usb_std_pkg.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\gowin_pll\gowin_pll.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\gowin_pll\gowin_pll_mod.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\i2c_master\i2c_master.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\pll_init.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\serdes\serdes.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\serdes\upar_arbiter\upar_arbiter.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\serdes\usb3_2_phy\usb3_2_phy.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\USB3_2_Device_Controller_Top.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\transfer_in_mem.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\transfer_in_mem_ping_pong.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\transfer_out_mem.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\transfer_out_mem_ping_pong.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_2_device_controller.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_const.vh" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_ep.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_ep0.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_ep0in_ram.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_ltssm_device.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_macro_define.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_protocol.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\iic\gw_i2c_master.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\iic\iic_controller.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\iic\master_sram_iic.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\top.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\usb3_2_user_layer\EP0_ControlTransfer\ControlTransfer.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\usb3_2_user_layer\EP0_ControlTransfer\usb_dfu_handler.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\usb3_2_user_layer\EP0_ControlTransfer\usb_ep0_core.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\usb3_2_user_layer\EP1_loopback.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\usb3_2_user_layer\EP2_speed.v" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\usb3_2_user_layer\UserLayer_top.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\usb3_2_user_layer\spi_flash_controller\spi_flash_controller.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\rtl\usb3_2_user_layer\spi_flash_controller\spi_phy.sv" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_link.vg" type="verilog"/>
-        <File path="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\ip\usb3_2_device_controller\usb3_pipe.vg" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\include\audio_pkg.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\include\cdc_pkg.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\include\dfu_pkg.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\include\msos_pkg.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\include\usb_std_pkg.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\gowin_pll\gowin_pll.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\gowin_pll\gowin_pll_mod.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\i2c_master\i2c_master.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\pll_init.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\serdes\serdes.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\serdes\upar_arbiter\upar_arbiter.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\serdes\usb3_2_phy\usb3_2_phy.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\USB3_2_Device_Controller_Top.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\transfer_in_mem.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\transfer_in_mem_ping_pong.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\transfer_out_mem.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\transfer_out_mem_ping_pong.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_2_device_controller.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_const.vh" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_ep.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_ep0.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_ep0in_ram.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_ltssm_device.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_macro_define.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_protocol.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\iic\gw_i2c_master.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\iic\iic_controller.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\iic\master_sram_iic.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\top.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\usb3_2_user_layer\EP0_ControlTransfer\ControlTransfer.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\usb3_2_user_layer\EP0_ControlTransfer\usb_dfu_handler.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\usb3_2_user_layer\EP0_ControlTransfer\usb_ep0_core.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\usb3_2_user_layer\EP1_loopback.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\usb3_2_user_layer\EP2_speed.v" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\usb3_2_user_layer\UserLayer_top.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\usb3_2_user_layer\spi_flash_controller\spi_flash_controller.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\rtl\usb3_2_user_layer\spi_flash_controller\spi_phy.sv" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_link.vg" type="verilog"/>
+        <File path="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\ip\usb3_2_device_controller\usb3_pipe.vg" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
@@ -56,7 +56,7 @@
         <Option type="max_fanout" value="1000"/>
         <Option type="netlist_hierarchy" value="1"/>
         <Option type="opt_goal" value="auto"/>
-        <Option type="output_file" value="E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\gwsynthesis\prj.vg"/>
+        <Option type="output_file" value="E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\gwsynthesis\prj.vg"/>
         <Option type="print_all_synthesis_warning" value="0"/>
         <Option type="ram_rw_check" value="0"/>
         <Option type="ram_style" value="auto"/>

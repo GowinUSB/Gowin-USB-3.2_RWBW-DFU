@@ -12,6 +12,40 @@ def _auto_patch_lengths(desc_data):
     if hs_cfg and hs_payload:
         hs_cfg.wTotalLength = ctypes.sizeof(hs_cfg) + sum(_get_size(x) for x in hs_payload)
 
+        unique_interfaces = set()
+        for i, item in enumerate(hs_payload):
+            desc_type = getattr(item, 'bDescriptorType', -1)
+            
+            # 统计接口数量
+            if desc_type == 0x04:
+                unique_interfaces.add(getattr(item, 'bInterfaceNumber', -1))
+                
+            # 嗅探 IAD 接口关联
+            elif desc_type == 0x0B:
+                iad_intfs = set()
+                for j in range(i + 1, len(hs_payload)):
+                    sub_item = hs_payload[j]
+                    sub_type = getattr(sub_item, 'bDescriptorType', -1)
+                    if sub_type == 0x0B: break
+                    if sub_type == 0x04: iad_intfs.add(getattr(sub_item, 'bInterfaceNumber', -1))
+                if hasattr(item, 'bInterfaceCount'): item.bInterfaceCount = len(iad_intfs)
+                if hasattr(item, 'bFirstInterface') and iad_intfs: item.bFirstInterface = min(iad_intfs)
+                
+            # 嗅探 UVC / UAC 局部头部，自动推导 Class-Specific 数据总长
+            elif desc_type == 0x24 and hasattr(item, 'wTotalLength'):
+                class_total_len = 0
+                for j in range(i, len(hs_payload)):
+                    sub_item = hs_payload[j]
+                    sub_type = getattr(sub_item, 'bDescriptorType', -1)
+                    # 遇到标准接口(0x04)、标准端点(0x05) 或 IAD(0x0B) 说明当前类特定块结束
+                    if j > i and sub_type in (0x04, 0x05, 0x0B): 
+                        break
+                    class_total_len += _get_size(sub_item)
+                item.wTotalLength = class_total_len
+                
+        if hasattr(hs_cfg, 'bNumInterfaces'):
+            hs_cfg.bNumInterfaces = len(unique_interfaces)
+
     # 2. DFU 配置修补
     dfu_cfg = desc_data.get('dfu_cfg')
     dfu_payload = desc_data.get('dfu_payload', [])

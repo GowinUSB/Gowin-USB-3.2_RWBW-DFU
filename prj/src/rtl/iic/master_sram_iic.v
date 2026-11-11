@@ -1,5 +1,3 @@
-// Copyright (c) 2026 GOWIN SEMICONDUCTOR CORPORATION.
-// SPDX-License-Identifier: MIT
 
 `timescale 1ns/1ps
 

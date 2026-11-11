@@ -1,5 +1,3 @@
-// Copyright (c) 2026 GOWIN SEMICONDUCTOR CORPORATION.
-// SPDX-License-Identifier: MIT
 
 import usb_std_pkg::*;
 
@@ -10,7 +8,7 @@ module usb_cdc_handler (
     // 广播 SETUP 指令
     ,input  logic [47:0]  route_word
     
-    // IN数据相关
+    // OUT数据相关
     ,input  logic         transfer_out_data_val // EP0 OUT 数据 有效
     ,input  logic [63:0]  transfer_out_data     // EP0 OUT 数据
     ,input  logic [13:0]  transfer_out_data_pt  // EP0 OUT 数据 计数器

@@ -1,7 +1,7 @@
-Reading netlist file: "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\gwsynthesis\prj.vg"
-Parsing netlist file "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\gwsynthesis\prj.vg" completed
+Reading netlist file: "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\gwsynthesis\prj.vg"
+Parsing netlist file "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\gwsynthesis\prj.vg" completed
 Processing netlist completed
-Reading constraint file: "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\constrs\top.cst"
+Reading constraint file: "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\constrs\top.cst"
 Physical Constraint parsed completed
 Running placement......
 [10%] Placement Phase 0 completed
@@ -22,11 +22,11 @@ Bitstream generation in progress......
 Bitstream generation completed
 Running power analysis......
 [100%] Power analysis completed
-Generate file "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\pnr\prj.power.html" completed
-Generate file "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\pnr\prj.pin.html" completed
-Generate file "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\pnr\prj.rpt.html" completed
-Generate file "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\pnr\prj.rpt.txt" completed
-Generate file "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\pnr\prj.tr.html" completed
-Generate file "E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\pnr\prj.tr" completed
-Wed Nov  4 15:46:45 2026
+Generate file "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\pnr\prj.power.html" completed
+Generate file "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\pnr\prj.pin.html" completed
+Generate file "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\pnr\prj.rpt.html" completed
+Generate file "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\pnr\prj.rpt.txt" completed
+Generate file "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\pnr\prj.tr.html" completed
+Generate file "E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\pnr\prj.tr" completed
+Wed Nov 11 10:41:10 2026
 

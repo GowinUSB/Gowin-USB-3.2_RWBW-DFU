@@ -1,9 +1,9 @@
--d E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\gwsynthesis\prj.vg
+-d E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\gwsynthesis\prj.vg
 -p GW5AT-60B-UBGA225-2
 -pn GW5AT-LV60UG225C2/I1
--cst E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\constrs\top.cst
--cfg E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\impl\pnr\device.cfg
--sdc E:\5.upload_gtihub\Gowin-USB-3.2_RWBW+DFU\prj\src\constrs\top.sdc
+-cst E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\constrs\top.cst
+-cfg E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\impl\pnr\device.cfg
+-sdc E:\4.upload_version\USB32_GW5AT60_RWBW+DFU_Ver1.1.1\GW5AT_LV60_UG225_V1.0\src\constrs\top.sdc
 -bit
 -tr
 -ph
@@ -18,4 +18,4 @@
 -route_maxfan 23
 -global_freq 100.000
 -enable_dsrm 1
--csr E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/serdes.csr
+-csr E:/4.upload_version/USB32_GW5AT60_RWBW+DFU_Ver1.1.1/GW5AT_LV60_UG225_V1.0/src/ip/serdes/serdes.csr

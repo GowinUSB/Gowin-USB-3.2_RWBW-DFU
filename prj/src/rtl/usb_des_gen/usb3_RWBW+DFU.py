@@ -4,9 +4,12 @@ USB 3.2 BULK + DFU Composite Device 配置总表
 支持 MS OS 1.0 & 2.0 (多接口/多 GUID 配置)
 =========================================================================
 """
-
+import sys
 import ctypes
 import os
+
+if sys.platform.startswith('win'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 from usb_desc_lib.standard import (
     desc_Device_t, desc_Config_t, desc_Interface_t, desc_Endpoint_t,
@@ -400,8 +403,26 @@ if __name__ == "__main__":
         'msos20_dfu_desc': [dfu_msos20_set_hdr, dfu_msos20_compat, dfu_msos20_reg]
     }
 
+    PREFIX = "usb_desc_RWBW+DFU"
+
     script_dir = os.path.dirname(os.path.abspath(__file__))
     target_output_dir = os.path.normpath(os.path.join(script_dir, "..","usb3_2_user_layer", "descriptors"))
 
-    generate_usb3_dat_files(desc_data, strings_config, prefix="usb_desc_RWBW+DFU", output_dir=target_output_dir)
+    generate_usb3_dat_files(
+        desc_data, 
+        strings_config, 
+        prefix=PREFIX, 
+        output_dir=target_output_dir)
+
+# 3. 额外生成固定的顶层配置文件
+    config_file_path = os.path.join(target_output_dir, "usb_desc_config.vh")
+    with open(config_file_path, "w", encoding="utf-8") as f:
+        f.write("`ifndef __USB_DESC_CONFIG_VH__\n")
+        f.write("`define __USB_DESC_CONFIG_VH__\n\n")
+        # 自动生成动态文件名的 include 语句
+        f.write(f'`include "descriptors/{PREFIX}_params.vh"\n')
+        # 自动生成对应的 DAT 文件路径宏
+        f.write(f'`define USB_DESC_DAT_FILE "./descriptors/{PREFIX}.dat"\n\n')
+        f.write("`endif\n")
+
     print(f"成功生成！路径: {target_output_dir}")

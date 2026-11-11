@@ -1,5 +1,3 @@
-// Copyright (c) 2026 GOWIN SEMICONDUCTOR CORPORATION.
-// SPDX-License-Identifier: MIT
 // =====================================================================
 // module name: spi_flash_controller
 // description: SPI Flash Controller with 4KB SRAM Cache for RMW (Read-Modify-Write)

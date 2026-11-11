@@ -35,7 +35,6 @@
         <File path="src/rtl/iic/master_sram_iic.v" type="file.verilog" enable="1"/>
         <File path="src/rtl/top.sv" type="file.verilog" enable="1"/>
         <File path="src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv" type="file.verilog" enable="1"/>
-        <File path="src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_cdc_handler.sv" type="file.verilog" enable="0"/>
         <File path="src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_dfu_handler.sv" type="file.verilog" enable="1"/>
         <File path="src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_ep0_core.sv" type="file.verilog" enable="1"/>
         <File path="src/rtl/usb3_2_user_layer/EP1_loopback.v" type="file.verilog" enable="1"/>
@@ -47,6 +46,5 @@
         <File path="src/ip/usb3_2_device_controller/usb3_pipe.vg" type="file.netlist" enable="1"/>
         <File path="src/constrs/top.cst" type="file.cst" enable="1"/>
         <File path="src/constrs/top.sdc" type="file.sdc" enable="1"/>
-        <File path="src/prj.rao" type="file.gao" enable="0"/>
     </FileList>
 </Project>

@@ -43,39 +43,39 @@
     },
     {
         "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/master_sram_iic.v",
-        "InstLine": 8,
+        "InstLine": 6,
         "InstName": "master_sram_iic",
         "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/master_sram_iic.v",
-        "ModuleLine": 8,
+        "ModuleLine": 6,
         "ModuleName": "master_sram_iic"
     },
     {
         "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
-        "InstLine": 3,
+        "InstLine": 1,
         "InstName": "top",
         "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
-        "ModuleLine": 3,
+        "ModuleLine": 1,
         "ModuleName": "top",
         "SubInsts": [
             {
                 "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
-                "InstLine": 239,
+                "InstLine": 237,
                 "InstName": "cc_ctrl_inst",
                 "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/gw_i2c_master.v",
-                "ModuleLine": 7,
+                "ModuleLine": 5,
                 "ModuleName": "gw_i2c_master",
                 "SubInsts": [
                     {
                         "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/gw_i2c_master.v",
-                        "InstLine": 114,
+                        "InstLine": 112,
                         "InstName": "u_iic_controller",
                         "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/iic_controller.v",
-                        "ModuleLine": 5,
+                        "ModuleLine": 3,
                         "ModuleName": "iic_controller"
                     },
                     {
                         "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/iic/gw_i2c_master.v",
-                        "InstLine": 132,
+                        "InstLine": 130,
                         "InstName": "u_i2c_master_top",
                         "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/i2c_master/i2c_master.v",
                         "ModuleLine": 972,
@@ -95,7 +95,7 @@
             },
             {
                 "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
-                "InstLine": 259,
+                "InstLine": 257,
                 "InstName": "SerDes_Top_inst",
                 "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/serdes/serdes.v",
                 "ModuleLine": 11,
@@ -141,7 +141,7 @@
             },
             {
                 "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
-                "InstLine": 326,
+                "InstLine": 324,
                 "InstName": "USB3_2_Device_Controller_Top_inst",
                 "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/ip/usb3_2_device_controller/USB3_2_Device_Controller_Top.sv",
                 "ModuleLine": 2,
@@ -687,68 +687,68 @@
             },
             {
                 "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/top.sv",
-                "InstLine": 404,
+                "InstLine": 402,
                 "InstName": "UserLayer_top_inst",
                 "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
-                "ModuleLine": 3,
+                "ModuleLine": 1,
                 "ModuleName": "UserLayer_top",
                 "SubInsts": [
                     {
                         "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
-                        "InstLine": 60,
+                        "InstLine": 58,
                         "InstName": "ControlTransfer_inst",
                         "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv",
-                        "ModuleLine": 10,
+                        "ModuleLine": 5,
                         "ModuleName": "ControlTransfer",
                         "SubInsts": [
                             {
                                 "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv",
-                                "InstLine": 373,
+                                "InstLine": 369,
                                 "InstName": "u_ep0_core",
                                 "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_ep0_core.sv",
-                                "ModuleLine": 6,
+                                "ModuleLine": 4,
                                 "ModuleName": "usb_ep0_core"
                             },
                             {
                                 "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/ControlTransfer.sv",
-                                "InstLine": 401,
+                                "InstLine": 404,
                                 "InstName": "gen_dfu.u_dfu_handler",
                                 "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP0_ControlTransfer/usb_dfu_handler.sv",
-                                "ModuleLine": 7,
+                                "ModuleLine": 5,
                                 "ModuleName": "usb_dfu_handler"
                             }
                         ]
                     },
                     {
                         "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
-                        "InstLine": 110,
+                        "InstLine": 108,
                         "InstName": "EP1_loopback_inst",
                         "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP1_loopback.v",
-                        "ModuleLine": 3,
+                        "ModuleLine": 1,
                         "ModuleName": "EP1_loopback"
                     },
                     {
                         "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
-                        "InstLine": 137,
+                        "InstLine": 135,
                         "InstName": "EP2_speed_inst",
                         "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/EP2_speed.v",
-                        "ModuleLine": 3,
+                        "ModuleLine": 1,
                         "ModuleName": "EP2_speed"
                     },
                     {
                         "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/UserLayer_top.sv",
-                        "InstLine": 203,
+                        "InstLine": 201,
                         "InstName": "spi_flash_controller",
                         "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/spi_flash_controller/spi_flash_controller.sv",
-                        "ModuleLine": 9,
+                        "ModuleLine": 7,
                         "ModuleName": "spi_flash_controller",
                         "SubInsts": [
                             {
                                 "InstFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/spi_flash_controller/spi_flash_controller.sv",
-                                "InstLine": 51,
+                                "InstLine": 49,
                                 "InstName": "u_spi_phy",
                                 "ModuleFile": "E:/5.upload_gtihub/Gowin-USB-3.2_RWBW+DFU/prj/src/rtl/usb3_2_user_layer/spi_flash_controller/spi_phy.sv",
-                                "ModuleLine": 3,
+                                "ModuleLine": 1,
                                 "ModuleName": "spi_phy"
                             }
                         ]
