@@ -143,8 +143,8 @@
     <h1>USB3.2 复合设备 (BandWidth Test + DFU) 系统架构说明</h1>
     
     <div class="header-meta">
-        <strong>文档版本:</strong> V1.1 &nbsp;&nbsp;|&nbsp;&nbsp; 
-        <strong>更新日期:</strong> 2026-11-04 <br>
+        <strong>文档版本:</strong> V1.1.1 &nbsp;&nbsp;|&nbsp;&nbsp; 
+        <strong>更新日期:</strong> 2026-11-11 <br>
         <strong>项目描述:</strong> 基于 FPGA 的 USB 3.2 带宽测试设备工程 (含DFU背景升级)
     </div>
 
@@ -174,10 +174,18 @@
                 <td>zefeng</td>
             </tr>
         </tbody>
+                <tbody>
+            <tr>
+                <td>V1.1.1</td>
+                <td>2026-11-11</td>
+                <td>更新配套的测试工具，修正部分描述错误。</td>
+                <td>zefeng</td>
+            </tr>
+        </tbody>
     </table>
 
     <h2>1. 系统概述</h2>
-    <p>本工程实现了一个基于 FPGA 的 USB 3.2 复合设备，包含 <strong>USB 带宽测试(Read/Write BandWidth Test, RWBW)</strong> 和 <strong>DFU背景升级 (Device Firmware Upgrade)</strong> 两个核心功能。其中，RWBW带宽测试有配套的 带宽测试软件 USB_RWBWTest_V1.0.1，可以进行 读写一致性测试 以及 读写压力测试。</p>
+    <p>本工程实现了一个基于 FPGA 的 USB 3.2 复合设备，包含 <strong>USB 带宽测试(Read/Write BandWidth Test, RWBW)</strong> 和 <strong>DFU背景升级 (Device Firmware Upgrade)</strong> 两个核心功能。其中，RWBW带宽测试有配套的带宽测试软件 USB_RWBWTest_V1.0.2，该软件与 DFU 升级工具等均已统一集成于 <strong>Gowin_USB_tools</strong> 工具箱软件中，方便用户集中选择调用，可进行读写一致性测试以及读写压力测试。</p>
     <p>系统支持基于标准 DFU 协议的在线背景升级功能。为确保设备的高可靠性与防“砖”能力，底层采用了 Multi-Boot 多重启动架构对 8MB(GD25Q64ESIG)/16MB(W25Q128JVSIQ) 的 SPI Flash 空间进行了严格划分：</p>
     <ul>
         <li><strong>工作位流 (Working Image)</strong>：运行于起始地址 <code>0x0000000</code>，作为 DFU 更新的目标区域；</li>
@@ -190,7 +198,7 @@
         <strong>💡 地址配置说明：</strong><br>
         此处及后文提及的所有基准地址（如 <code>0x0300000</code>）均是针对 <strong>GW5AT-60</strong> 系列生成的 <code>.bin</code> 位流文件大小设定的。用户在实际开发时，可根据所使用的具体芯片型号对该地址进行调整。举例参考：
         <ul>
-            <li><strong>GW5A-60</strong>：<code> .bin</code> 文件约占用 800 KB ，建议将黄金位流地址调整为 <code>0x0100000</code> </code>；</li>
+            <li><strong>GW5A-25</strong>：<code> .bin</code> 文件约占用 800 KB ，建议将黄金位流地址调整为 <code>0x0100000</code> </code>；</li>
             <li><strong>GW5A-138</strong>：<code>.bin</code> 文件约占用 4850 KB ，建议将黄金位流地址调整为 <code>0x0500000</code></code>。</li>
         </ul>
     </div>
@@ -211,9 +219,9 @@
         <tbody>
             <tr>
                 <td rowspan="2"><strong>系统控制</strong></td>
-                <td><code>CLK_IN</code></td>
+                <td><code>sys_clk_p/sys_clk_n</code></td>
                 <td>Input</td>
-                <td>50MHz 基础系统时钟输入</td>
+                <td>200MHz 差分系统时钟输入</td>
             </tr>
             <tr>
                 <td><code>LED</code></td>
@@ -285,22 +293,30 @@
         <li><strong>SPI Flash 写入路由</strong>：设备以 DFU 模式枚举成功后，通过端点接收到的固件数据包将被转化为 SPI 物理时序，定向擦写外部 SPI Flash 的 <code>0x0000000</code> 工作位流区，且过程不会干扰其他扇区的数据。</li>
     </ul>
 
-    <h2>4. USB_RWBWTest 软件使用说明</h2>
-    <p>USB_RWBWTest_V1.0.1 是一款 USB 设备读写与带宽测试工具，支持简体中文与 English 双语界面。该软件可对设备进行高强度的读写一致性验证与极限吞吐量测试。</p>
+<h2>4. USB测试工具箱 (Gowin_USB_tools) 与使用说明</h2>
+<p>为了方便用户管理与测试，所有的配套上位机工具均统一集成在 <strong>Gowin_USB_tools</strong> 工具箱软件中。用户打开 Gowin_USB_tools 后，可根据测试需求点击启动对应的测试软件（如 USB带宽测试 或 固件升级 ）。</p>
+
+<div class="img-container">
+    <img src="./picture/Gowin_USB_tools.png" alt="Gowin USB Tools Main Interface" style="max-width: 50%; margin: 10px auto;">
+    <p style="text-align: center; color: #64748b; font-size: 9pt;">图 4-1：Gowin_USB_tools 软件中转站主界面</p>
+</div>
+
+<h3>4.1 USB_RWBWTest 软件说明</h3>
+<p>在 Gowin_USB_tools 中选择启动 <strong>USB带宽测试</strong>。这是一款 USB 设备读写与带宽测试工具，支持简体中文与 English 双语界面。该软件可对设备进行高强度的读写一致性验证与极限吞吐量测试。</p>
 
     <div class="img-container">
         <img src="./picture/TOOLS_CN.png" alt="USBRWTest Main Interface" style="max-width: 50%; margin: 10px auto;">
-        <p style="text-align: center; color: #64748b; font-size: 9pt;">图 4-USB_RWBWTest_V1.0.1 软件主界面</p>
+        <p style="text-align: center; color: #64748b; font-size: 9pt;">图 4-USB_RWBWTest_V1.0.2 软件主界面</p>
     </div>
 
-    <h3>4.1 设备连接与基础配置</h3>
+    <h3>4.1.1 设备连接与基础配置</h3>
     <ul>
         <li><strong>自动枚举与刷新：</strong> 软件内置后台 USB 硬件拓扑监控线程，支持设备的即插即用与断开自动检测，用户也可点击“刷新设备”按钮手动重载。</li>
         <li><strong>端点配置：</strong> 默认情况下，软件会自动选择 Interface 0 及对应的底层读写端点(默认端点1用于读写一致性测试，端点2用于读写压力测试)。</li>
         <li>如需测试特定端点，可勾选“自定义接口/端口”复选框，手动指定 IN 和 OUT 端点。</li>
     </ul>
 
-    <h3>4.2 读写一致性测试 (Loopback)</h3>
+    <h3>4.1.2 读写一致性测试 (Loopback)</h3>
     <p>一致性测试用于验证 FPGA 端点收发数据的准确性，通过比对下发与回传的数据负载来判断通信链路是否可靠。</p>
     <ul>
         <li><strong>测试模式：</strong> 提供 <strong>顺序数据测试</strong>、<strong>固定值测试</strong> (可自定义 Hex 基础值) 以及 <strong>随机数据测试</strong> 三种数据生成策略。</li>
@@ -312,7 +328,7 @@
         <p style="text-align: center; color: #64748b; font-size: 9pt;">图 4-2：读写一致性测试运行状态</p>
     </div>
 
-    <h3>4.3 带宽与压力测试 (Bandwidth & Stress Test)</h3>
+    <h3>4.1.3 带宽与压力测试 (Bandwidth & Stress Test)</h3>
     <p>带宽与压力测试用于测试当前环境下实际的传输速率。提供实时的速率统计，结果将反馈至界面右侧的 READ/WRITE 动态仪表盘中。</p>
     <ul>
         <li><strong>带宽测试 (Bandwidth Test)：</strong> 支持独立的“写入带宽测试”与“读取带宽测试”。用户可通过“测试数据量(x5MB)”微调框设置单次测试的循环次数（默认 100 次，即 500MB 数据量）。</li>
@@ -329,17 +345,17 @@
         <p style="text-align: center; color: #64748b; font-size: 9pt;">图 4-3：双向带宽压力测试与实时仪表盘</p>
     </div>
    
-    <h2>5. 功能测试 —— DFU 背景升级</h2>
+    <h2>4.2 功能测试 —— DFU 背景升级</h2>
     <p>本系统采用 Multi-Boot 多重启动架构，为了实现安全的远程升级与数据隔离，系统将外部 W25Q128JVSIQ SPI Flash (16MB) 的物理地址进行了如下映射：</p>
     <ul>
         <li><code>0x000000</code>：工作位流 (Working Image)，DFU 协议的默认下载与擦写目标地址。</li>
         <li><code>0x300000</code>：黄金位流 (Golden Image)，出厂固化的安全备份区域。该地址可以自定义。</li>
     </ul>
 
-    <h3>5.1 FPGA芯片配置参数预置</h3>
+    <h3>4.2.1 FPGA芯片配置参数预置</h3>
     <div class="warning-box">
         <strong>⚠️ 开发板版本警告：</strong><br>
-        <code>DK_USB_GW5AT-LV60UG225_V1.0/V1.1开发板</code> <strong>VQPS 引脚默认下拉接地</strong>，因此此时无法进行 黄金地址写入操作。 请直接跳转至 <code> 5.4 使用 dfu-util 执行升级测试 </code>
+        <code>DK_USB_GW5AT-LV60UG225_V1.0/V1.1开发板</code> <strong>VQPS 引脚默认下拉接地</strong>，因此此时无法进行 黄金地址写入操作。 请直接跳转至 <code> 4.2.4 使用 dfu-util 执行升级测试 </code>
     </div>
     <div class="warning-box">
         <strong>⚠️ 硬件操作警告：</strong><br>
@@ -386,7 +402,7 @@
 
     <p><em>更具体的说明可见《UG714-Arora V 25K FPGA Products Programming and Configuration Guide》 —— 4.3 Security</em></p>
 
-    <h3>5.2 黄金位流 (Golden Image) 与 工作位流 （Working Image） 预置</h3>
+    <h3>4.2.2 黄金位流 (Golden Image) 与 工作位流 （Working Image） 预置</h3>
     <p>为了保证防砖机制能够正常介入，在交付前或首次测试前，需先通过硬件下载器将稳定版本的 <code>golden_DFU_V1.0.fs</code> 固件烧录至黄金地址。</p>
     <ol>
         <li>打开 Gowin Programmer，配置 Access Mode 为 <code>External Flash Mode Arora V</code>。</li>
@@ -396,7 +412,7 @@
         <li>选择预先编译好的 Working Image 位流文件并执行烧录。</li>
     </ol>
 
-    <h3>5.3 环境配置</h3>
+    <h3>4.2.3 环境配置</h3>
 
     <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
     <p style="margin: 0; color: #2e7d32; font-weight: 500;">
@@ -416,23 +432,23 @@
         <img src="./picture/zadig_dfu.png" alt="Zadig" style="max-width: 60%; margin: 10px auto;">
     </div>
 
-    <h3>5.4 使用 dfu-util 执行升级测试</h3>
+    <h3>4.2.4 使用 dfu-util 执行升级测试</h3>
     <p>本节主要验证通过 DFU (Device Firmware Upgrade) 接口向开发板外部的 SPI Flash 写入新固件的功能。测试提供了两种可选方式：使用图形化配套软件，或使用开源命令行工具 <code>dfu-util</code>。</p>
 
-    <h4>5.4.1 方法一：使用图形界面 (GUI) 工具执行升级</h4>
-    <p>本次测试使用配套 <code>tools</code> 文件夹中的 <strong>CDC+HID+DFU测试软件.exe</strong> 向开发板写入新固件。</p>
+    <h4>4.2.4.1 方法一：使用图形界面 (GUI) 工具执行升级</h4>
+   <p>本次测试使用配套的 <strong>dfu_tool.exe</strong> 软件向开发板写入新固件。用户可以通过打开 <strong>Gowin_USB_tools</strong> 中转站，在界面中选择“固件升级”启动该 DFU 升级工具。</p>
 
     <p><strong>测试环境与注意事项</strong></p>
     <ul>
-        <li><strong>环境依赖</strong>：请确保该测试软件与 <code>dfu-util.exe</code> 以及 <code>libusb-1.0.dll</code> 位于同一文件夹目录下，或者已将 <code>dfu-util</code> 的路径成功添加至系统环境变量中，否则将导致下载功能无法调用。</li>
-        <li><strong>连接状态</strong>：在进行 DFU 升级测试时，软件界面的 VID/PID 以及当前的“设备连接状态”无需特别关注。</li>
+        <li><strong>环境依赖</strong>：请确保<code>Gowin_USB_tools\Tool_DFU\dfu_tool.exe</code>测试软件与 <code>dfu-util.exe</code> 以及 <code>libusb-1.0.dll</code> 位于同一文件夹目录下，或者已将 <code>dfu-util</code> 的路径成功添加至系统环境变量中，否则将导致下载功能无法调用。</li>
     </ul>
 
     <p><strong>升级操作步骤</strong></p>
     <ol>
+        <li><strong>插入设备</strong>：插入设备后，软件会自动识别当前设备处于“<strong>APP/DFU模式</strong>”，用户可以点击<strong>刷新设备</strong>以刷新当前设备列表。</li>
         <li><strong>选择固件</strong>：点击“<strong>选择固件文件</strong>”按钮，在弹出的窗口中选择您希望下载的 <code>.bin</code> 固件文件。</li>
-        <li><strong>进入 DFU 模式</strong>：点击“<strong>执行 Detach</strong>”按钮，触发设备切换至 DFU 模式。</li>
-        <li><strong>下载固件</strong>：点击“<strong>执行 Download</strong>”按钮，软件将开始把 <code>.bin</code> 文件下载至开发板的 <code>spi_flash</code> 中。此时，下方的输出窗口会实时显示实际的下载进度。</li>
+        <li><strong>切换当前模式</strong>：点击“<strong>执行 Detach</strong>”按钮，触发设备切换至 DFU 模式/APP 模式，此步可跳过</li>
+        <li><strong>下载固件</strong>：点击“<strong>执行固件下载</strong>”按钮，软件将开始把 <code>.bin</code> 文件下载至开发板的 <code>spi_flash</code> 中。此时，下方的输出窗口会实时显示实际的下载进度。</li>
         <li><strong>重启生效</strong>：下载进度完成后，对开发板<strong>重新上电</strong>（断电后重新连接），设备即可加载并运行新烧录的固件。</li>
     </ol>
 
@@ -444,7 +460,8 @@
     <p>附件的 <code>DFU_bin</code> 文件夹中提供了以下几个固件供测试使用：</p>
     <ul>
         <li><code>5A60_USB2_HIFI+HID+DFU.bin</code> —— 在DK_USB_GW5AT60-LV60UG225_V1.0开发板上运行的 USB2.0 复合设备，包含 HIFI+HID+DFU功能。</li>
-        <li><code>5A60_USB3_BULK+DFU_MSOS2.0_V1.1.bin</code> —— 在DK_USB_GW5AT60-LV60UG225_V1.0开发板上运行的 USB3.2 复合设备，包含 BULK带宽测试+DFU功能。</li>
+        <li><code>5A60_V1.0_RWBW+DFU_V1.1.1.bin</code> —— 在DK_USB_GW5AT60-LV60UG225_V1.0开发板上运行的 USB3.2 复合设备，包含 BULK带宽测试+DFU功能。</li>
+        <li><code>5A60_V1.1_RWBW+DFU_V1.1.1.bin</code> —— 在DK_USB_GW5AT60-LV60UG225_V1.1开发板上运行的 USB3.2 复合设备，包含 BULK带宽测试+DFU功能。</li>
     </ul>
 
     <div class="warning-box">
@@ -452,7 +469,7 @@
         以上固件均保留了 DFU 升级功能。这意味着在烧录这几个固件并重新上电后，您依然可以继续使用该软件进行下一次的固件烧录。
     </div>
 
-    <h4>5.4.2 方法二：使用 dfu-util 命令行执行升级</h4>
+    <h4>4.2.4.2 方法二：使用 dfu-util 命令行执行升级</h4>
     <p>您也可以使用跨平台的开源命令行工具 <code>dfu-util</code> 进行测试。请确保已将 <code>dfu-util</code> 添加至系统的环境变量中。</p>
 
     <p><strong>步骤 1：准备固件位流文件</strong></p>

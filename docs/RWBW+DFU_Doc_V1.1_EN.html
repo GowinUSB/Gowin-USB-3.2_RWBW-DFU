@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>USB 3.2 Composite Device (Bandwidth Test + DFU) System Architecture</title>
+    <title>USB 3.2 Composite Device (BandWidth Test + DFU) System Architecture Overview</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; }
         @page {
@@ -122,6 +122,7 @@
         .no-border-table tr:nth-child(even) {
             background-color: transparent;
         }
+        /* Optimized for VS Code / Chrome print engine */
         @media print {
             * {
                 -webkit-print-color-adjust: exact !important;
@@ -139,12 +140,12 @@
 </head>
 <body>
 
-    <h1>USB 3.2 Composite Device (Bandwidth Test + DFU) System Architecture</h1>
+    <h1>USB 3.2 Composite Device (BandWidth Test + DFU) System Architecture Overview</h1>
     
     <div class="header-meta">
-        <strong>Document Version:</strong> V1.1 &nbsp;&nbsp;|&nbsp;&nbsp; 
-        <strong>Date:</strong> 2026-11-04 <br>
-        <strong>Project Description:</strong> FPGA-based USB 3.2 Bandwidth Test Device (with Background DFU)
+        <strong>Document Version:</strong> V1.1.1 &nbsp;&nbsp;|&nbsp;&nbsp; 
+        <strong>Update Date:</strong> 2026-11-11 <br>
+        <strong>Project Description:</strong> FPGA-based USB 3.2 Bandwidth Test Device Project (with DFU Background Upgrade)
     </div>
 
     <h2>Revision History</h2>
@@ -161,55 +162,65 @@
             <tr>
                 <td>V1.0</td>
                 <td>2026-10-14</td>
-                <td>Initial release. Implemented USB 3.2 Bandwidth test function, supporting reversible plug.</td>
+                <td>Initial release. Implemented USB 3.2 bandwidth test function, supporting reversible insertion.</td>
                 <td>zefeng</td>
             </tr>
+        </tbody>
+        <tbody>
             <tr>
                 <td>V1.1</td>
-                <td>2026-11-04</td>
+                <td>2026-11-4</td>
                 <td>Added driverless DFU functionality.</td>
+                <td>zefeng</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td>V1.1.1</td>
+                <td>2026-11-11</td>
+                <td>Updated bundled test tools and corrected description errors.</td>
                 <td>zefeng</td>
             </tr>
         </tbody>
     </table>
 
     <h2>1. System Overview</h2>
-    <p>This project implements an FPGA-based USB 3.2 composite device, featuring two core functions: <strong>USB Read/Write Bandwidth Test (RWBW)</strong> and <strong>Background Device Firmware Upgrade (DFU)</strong>. The RWBW test works with the accompanying software <code>USB_RWBWTest_V1.0.1</code> to perform read/write consistency testing and stress testing.</p>
-    <p>The system supports background online upgrades based on the standard DFU protocol. To ensure high reliability and prevent the device from being "bricked", the underlying architecture uses a Multi-Boot mechanism that strictly partitions the 8MB (GD25Q64ESIG) or 16MB (W25Q128JVSIQ) SPI Flash space:</p>
+    <p>This project implements an FPGA-based USB 3.2 composite device, including two core functions: <strong>USB Read/Write BandWidth Test (RWBW)</strong> and <strong>Device Firmware Upgrade (DFU) background upgrade</strong>. Among them, the RWBW bandwidth test has an accompanying test software, USB_RWBWTest_V1.0.2. This software, along with the DFU upgrade tool, is integrated into the <strong>Gowin_USB_tools</strong> toolkit, allowing users to centrally select and launch them for read/write consistency testing and stress testing.</p>
+    <p>The system supports online background upgrades based on the standard DFU protocol. To ensure high device reliability and anti-bricking capabilities, the lower layer adopts a Multi-Boot architecture to strictly partition the 8MB (GD25Q64ESIG) / 16MB (W25Q128JVSIQ) SPI Flash space:</p>
     <ul>
-        <li><strong>Working Image</strong>: Runs at the base address <code>0x0000000</code>, serving as the target area for DFU updates.</li>
-        <li><strong>Golden Image</strong>: Burned at <code>0x0300000</code>, acting as the underlying security baseline for system recovery.</li>
-        <li><strong>User Storage Area</strong>: The remaining space (<code>0x0600000</code> and above) is allocated to the UMS function for data storage.</li>
+        <li><strong>Working Image</strong>: Runs at the starting address <code>0x0000000</code>, serving as the target area for DFU updates;</li>
+        <li><strong>Golden Image</strong>: Solidified at the <code>0x0100000</code> address, serving as the underlying security baseline for system recovery;</li>
+        <li><strong>User Storage Area</strong>: The remaining space (<code>0x0200000</code> and above) is allocated to the UMS function as a data storage area.</li>
     </ul>
 
     <div class="info-box">
         <strong>💡 Address Configuration Note:</strong><br>
-        The base addresses mentioned here and below (e.g., <code>0x0300000</code>) are referenced for <code>.bin</code> bitstream files generated for the <strong>GW5AT-60</strong> series. Users should adjust these addresses based on the specific chip model used in actual development. Reference examples:
+        All base addresses mentioned here and below (e.g., <code>0x0300000</code>) are set according to the <code>.bin</code> bitstream file size generated for the <strong>GW5AT-60</strong> series. Users can adjust this address based on the specific chip model used during actual development. For example:
         <ul>
-            <li><strong>GW5A-60</strong>: The <code>.bin</code> file takes about 800 KB. It is recommended to adjust the golden image address to <code>0x0100000</code>.</li>
-            <li><strong>GW5A-138</strong>: The <code>.bin</code> file takes about 4850 KB. It is recommended to adjust the golden image address to <code>0x0500000</code>.</li>
+            <li><strong>GW5A-25</strong>: The <code>.bin</code> file occupies about 800 KB; it is recommended to adjust the golden image address to <code>0x0100000</code>;</li>
+            <li><strong>GW5A-138</strong>: The <code>.bin</code> file occupies about 4850 KB; it is recommended to adjust the golden image address to <code>0x0500000</code>.</li>
         </ul>
     </div>
 
-    <p>The top-level module <code>Top</code> integrates the clock network, USB physical layer (SoftPHY), USB protocol layer, and specific business subsystems. This architecture enables data interconnection from the USB interface to the underlying SPI Flash and physical logic pins.</p>
+    <p>The system top-level module <code>Top</code> is responsible for integrating the clock network, USB physical layer (SoftPHY), USB protocol layer, and specific business subsystems. This architecture achieves data interoperability from the USB interface to the underlying SPI Flash and physical UART logic pins.</p>
 
     <h2>2. External Hardware Interfaces</h2>
-    <p>The physical pin matrix exposed by the top-level <code>Top</code> module is as follows:</p>
+    <p>The physical pin matrix exposed by the system top-level <code>Top</code> module is as follows:</p>
     <table>
         <thead>
             <tr>
-                <th>Category</th>
-                <th>Signal/Pin Name</th>
+                <th>Interface Category</th>
+                <th>Signal Pin Name</th>
                 <th>Direction</th>
-                <th>Description</th>
+                <th>Functional Description</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td rowspan="2"><strong>System Control</strong></td>
-                <td><code>CLK_IN</code></td>
+                <td><code>sys_clk_p/sys_clk_n</code></td>
                 <td>Input</td>
-                <td>50MHz base system clock input</td>
+                <td>200MHz differential system clock input</td>
             </tr>
             <tr>
                 <td><code>LED</code></td>
@@ -226,121 +237,129 @@
                 <td rowspan="4"><strong>SPI Flash</strong></td>
                 <td><code>spi_sclk</code></td>
                 <td>Output</td>
-                <td>SPI clock</td>
+                <td>SPI Clock</td>
             </tr>
             <tr>
                 <td><code>spi_cs</code></td>
                 <td>Output</td>
-                <td>SPI chip select (active low)</td>
+                <td>SPI Chip Select (Active Low)</td>
             </tr>
             <tr>
                 <td><code>spi_mosi</code></td>
                 <td>Output</td>
-                <td>SPI Master Out / Slave In (MOSI) data line</td>
+                <td>SPI Master Out Slave In (MOSI) Data Line</td>
             </tr>
             <tr>
                 <td><code>spi_miso</code></td>
                 <td>Input</td>
-                <td>SPI Master In / Slave Out (MISO) data line</td>
+                <td>SPI Master In Slave Out (MISO) Data Line</td>
             </tr>
         </tbody>
     </table>
 
-    <h2>3. Core Subsystem Breakdown</h2>
-    <p>The system is logically partitioned into the following main subsystems, which collaborate to achieve USB 3.2 high-speed data stream processing and online firmware upgrades.</p>
+    <h2>3. Core Subsystems Breakdown</h2>
+    <p>The system is internally divided by logic domains into the following main subsystems, which collaborate to process high-speed USB 3.2 data streams and perform online firmware upgrades.</p>
     
     <div class="img-container">
-        <!-- Tip: Ensure the image here is updated to the USB 3.2 architecture diagram -->
+        <!-- Hint: Ensure the image here is updated to the USB 3.2 architecture diagram -->
         <img src="./picture/Functional_diagram.png" alt="Functional Diagram" style="display: block; margin: 30px auto; width: 90%; height: auto; max-width: 100%;">
     </div>
 
     <h3>3.1 Clock & Reset Management</h3>
     <ul>
-        <li><strong>Clock Network</strong>: The system receives external differential clocks via <code>TLVDS_IBUF</code> and outputs a 200MHz reference clock via <code>ELVDS_OBUF</code> to drive the physical layer. The core control logic working clock (<code>pclk</code>) is provided directly by the USB 3.2 PHY.</li>
-        <li><strong>Multi-level Reset Logic</strong>: The top-level logic features built-in boot delay counters to implement a multi-stage asynchronous reset and safe synchronous release sequence (<code>sys_rst_n</code>, <code>phy_resetn</code>, <code>phy_resetn2</code>). This prevents metastability during initial power-up and ensures safe initialization of the SerDes PLL.</li>
+        <li><strong>Clock Network</strong>: The system receives the external differential clock via <code>TLVDS_IBUF</code> and uses <code>ELVDS_OBUF</code> to output a 200MHz reference clock to drive the underlying physical layer. The operating clock (<code>pclk</code>) for the system's core control logic is provided directly by the USB 3.2 PHY.</li>
+        <li><strong>Multi-stage Reset Logic</strong>: The top-level logic incorporates a startup delay counter to implement multi-stage asynchronous resets and safe synchronous release sequences (<code>sys_rst_n</code>, <code>phy_resetn</code>, <code>phy_resetn2</code>), avoiding metastability during initial power-up and ensuring safe SerDes PLL initialization.</li>
     </ul>
 
     <h3>3.2 USB Core Framework</h3>
     <ul>
-        <li><strong><code>SerDes_Top</code> (USB 3.2 Physical Layer)</strong>: Utilizes the FPGA's underlying high-speed hard SerDes resources to implement USB 3.2 physical signal transmission and reception, providing standard PIPE data buses (e.g., <code>phy_pipe_rx_data</code>, <code>phy_pipe_tx_data</code>) and control interfaces to the protocol layer.</li>
-        <li><strong><code>USB3_2_Device_Controller_Top</code> (USB 3.2 Core Controller)</strong>: Handles the link and protocol layers for high-speed USB communication. Responsible for maintaining the LTSSM (Link Training and Status State Machine), packet assembly/parsing, CRC, data scrambling, and routing bus transactions to standardized read/write endpoint requests.</li>
+        <li><strong><code>SerDes_Top</code> (USB 3.2 Physical Layer)</strong>: Utilizes the FPGA's underlying high-speed hard SerDes resources to transmit and receive USB 3.2 protocol physical signals, providing a standard PIPE data bus (e.g., <code>phy_pipe_rx_data</code>, <code>phy_pipe_tx_data</code>) and control interfaces to the protocol layer.</li>
+        <li><strong><code>USB3_2_Device_Controller_Top</code> (USB 3.2 Core Controller)</strong>: Handles link and protocol layer logic for high-speed USB communication. Responsible for maintaining the LTSSM (Link Training and Status State Machine), packet assembly/parsing, CRC, and data scrambling/descrambling, translating bus transactions into standardized read/write requests for each Endpoint.</li>
     </ul>
 
     <h3>3.3 User Layer</h3>
-    <p>The top-level <code>UserLayer_top</code> module coordinates various control requests and specific business data interactions:</p>
+    <p>The top-level <code>UserLayer_top</code> module coordinates various device control requests and specific data interactions:</p>
     <ul>
-        <li><strong>Control Transfer & Enumeration</strong>: Parses Setup control requests sent by the host to EP0 and returns device descriptors to complete enumeration and parameter configuration.</li>
-        <li><strong>Bandwidth Test Module</strong>: Interfaces with the core controller's IN/OUT memory interfaces. It performs lossless read/write loopback on Endpoint 1 (EP1) and generates a continuous high-speed incremental data stream on Endpoint 2 (EP2) for host-side bandwidth limits and stress testing.</li>
+        <li><strong>Control Transfers and Enumeration</strong>: Parses Setup control requests sent by the host to EP0 and replies with device descriptors to complete device enumeration and parameter configuration.</li>
+        <li><strong>Bandwidth Test Module</strong>: Interfaces with the core controller's IN/OUT memory interfaces, implementing lossless loopback of read/write data on Endpoint 1 (EP1), and continuously generating a high-speed incremental data stream on Endpoint 2 (EP2) for host-side limits and stress testing.</li>
     </ul>
 
-    <h3>3.4 DFU (Device Firmware Upgrade) Background Mechanism</h3>
-    <p>The driverless online upgrade functionality is deeply integrated into the user logic and top-level state machine:</p>
+    <h3>3.4 DFU (Device Firmware Upgrade) Background Upgrade Mechanism</h3>
+    <p>The driverless online upgrade function is deeply integrated into the user logic and top-level state machine:</p>
     <ul>
-        <li><strong>Mode Switch & Soft Detach</strong>: When the host issues a DFU_DETACH request, the control module in <code>UserLayer_top</code> triggers the <code>o_dfu_detach_flag</code>. Upon capturing this pulse, the top-level logic flips the current operation mode (<code>dfu_mode</code>) and starts a 500ms forced timer (<code>disconnect_timer</code>).</li>
-        <li><strong>Bus Re-enumeration</strong>: During the 500ms timer, the system pulls down the <code>usb_logic_rstn</code> signal (simulating a VBUS power loss), forcing the PC to recognize a physical device disconnection. Once the timer expires, the device resumes operation and re-enumerates under the new mode.</li>
-        <li><strong>SPI Flash Write Routing</strong>: After successful DFU enumeration, firmware data packets received via the endpoint are converted into physical SPI timing and routed to overwrite the <code>0x0000000</code> Working Image area in the external SPI Flash, without interfering with data in other sectors.</li>
+        <li><strong>Mode Switching and Soft Detach</strong>: When the host sends a DFU_DETACH request, the control module in <code>UserLayer_top</code> pulls the <code>o_dfu_detach_flag</code> trigger high. Upon capturing this pulse, the top-level logic immediately toggles the current operating mode (<code>dfu_mode</code>) and starts a mandatory 500ms timer (<code>disconnect_timer</code>).</li>
+        <li><strong>Bus Re-enumeration</strong>: During the 500ms timer, the system pulls the <code>usb_logic_rstn</code> signal low (simulating a VBUS power drop), forcing the PC to believe the device was physically unplugged. After the timer clears, the device automatically resumes operation and re-enumerates in the new mode.</li>
+        <li><strong>SPI Flash Write Routing</strong>: After successfully enumerating in DFU mode, firmware data packets received via the endpoint are converted into SPI physical timing sequences to explicitly erase/write the external SPI Flash's <code>0x0000000</code> working image area, without disturbing data in other sectors.</li>
     </ul>
 
-    <h2>4. USB_RWBWTest Software User Guide</h2>
-    <p>USB_RWBWTest_V1.0.1 is a USB device read/write and bandwidth testing tool supporting both Simplified Chinese and English interfaces. It enables high-intensity read/write consistency verification and maximum throughput testing.</p>
+<h2>4. USB Test Toolkit (Gowin_USB_tools) and Usage Instructions</h2>
+<p>For ease of user management and testing, all bundled PC host tools are integrated into the <strong>Gowin_USB_tools</strong> toolkit software. Upon opening Gowin_USB_tools, users can click to launch the corresponding test software (e.g., USB Bandwidth Test or Firmware Upgrade) based on their testing needs.</p>
+
+<div class="img-container">
+    <img src="./picture/Gowin_USB_tools.png" alt="Gowin USB Tools Main Interface" style="max-width: 50%; margin: 10px auto;">
+    <p style="text-align: center; color: #64748b; font-size: 9pt;">Figure 4-1: Gowin_USB_tools Toolkit Main Interface</p>
+</div>
+
+<h3>4.1 USB_RWBWTest Software Instructions</h3>
+<p>Launch the <strong>USB Bandwidth Test</strong> from Gowin_USB_tools. This is a USB device read/write and bandwidth testing tool supporting both Simplified Chinese and English interfaces. It can perform intensive read/write consistency verification and maximum throughput testing on the device.</p>
 
     <div class="img-container">
         <img src="./picture/TOOLS_EN.png" alt="USBRWTest Main Interface" style="max-width: 50%; margin: 10px auto;">
-        <p style="text-align: center; color: #64748b; font-size: 9pt;">Figure 4-1: USB_RWBWTest_V1.0.1 Main Interface</p>
+        <p style="text-align: center; color: #64748b; font-size: 9pt;">Figure 4-USB_RWBWTest_V1.0.2 Main Interface</p>
     </div>
 
-    <h3>4.1 Device Connection and Basic Configuration</h3>
+    <h3>4.1.1 Device Connection and Basic Configuration</h3>
     <ul>
-        <li><strong>Auto-Enumeration & Refresh:</strong> The software features a background USB hardware topology monitoring thread for plug-and-play and auto-disconnection detection. Users can also click the "Refresh" button to reload manually.</li>
-        <li><strong>Endpoint Configuration:</strong> By default, the software automatically selects Interface 0 and its corresponding read/write endpoints (Endpoint 1 for consistency testing, Endpoint 2 for stress testing).</li>
-        <li>To test specific endpoints, check the "Custom Interface/Endpoint" box to manually assign IN and OUT endpoints.</li>
+        <li><strong>Auto-enumeration and Refresh:</strong> The software has a built-in background USB hardware topology monitoring thread, supporting plug-and-play and automatic disconnect detection. Users can also click the "Refresh Device" button to manually reload.</li>
+        <li><strong>Endpoint Configuration:</strong> By default, the software automatically selects Interface 0 and its corresponding underlying read/write endpoints (Endpoint 1 is used for loopback consistency testing, and Endpoint 2 for stress testing by default).</li>
+        <li>If specific endpoints need to be tested, users can check the "Custom Interface/Endpoint" box to manually specify IN and OUT endpoints.</li>
     </ul>
 
-    <h3>4.2 Read/Write Consistency Test (Loopback)</h3>
-    <p>The consistency test verifies the accuracy of the FPGA endpoint's data transmission and reception by comparing the sent payload against the returned payload.</p>
+    <h3>4.1.2 Read/Write Consistency Test (Loopback)</h3>
+    <p>The consistency test verifies the accuracy of endpoint data transmission and reception on the FPGA by comparing the sent and returned data payloads to determine link reliability.</p>
     <ul>
-        <li><strong>Test Modes:</strong> Provides three data generation strategies: <strong>Sequential Data Test</strong>, <strong>Fixed Value Test</strong> (customizable base Hex value), and <strong>Random Data Test</strong>.</li>
-        <li><strong>Data Sampling:</strong> When the test begins, a 512-byte sample of the first successfully transferred data (Hex preview of OUT and IN data) is printed in the left log window, while the progress bar displays the current status and success count.</li>
+        <li><strong>Test Modes:</strong> Offers three data generation strategies: <strong>Sequential Data Test</strong>, <strong>Fixed Value Test</strong> (customizable Hex base value), and <strong>Random Data Test</strong>.</li>
+        <li><strong>Data Sampling:</strong> At the start of the test, a sample of the first 512 bytes successfully transmitted (OUT and IN Hex preview) will be printed in the left log window, and the current progress and success count are displayed in real-time on the progress bar below.</li>
     </ul>
 
     <div class="img-container">
         <img src="./picture/loopback_EN.png" alt="Loopback Test" style="max-width: 50%; margin: 10px auto;">
-        <p style="text-align: center; color: #64748b; font-size: 9pt;">Figure 4-2: Read/Write Consistency Test Status</p>
+        <p style="text-align: center; color: #64748b; font-size: 9pt;">Figure 4-2: Loopback Test Running Status</p>
     </div>
 
-    <h3>4.3 Bandwidth & Stress Test</h3>
-    <p>These tests evaluate the actual transmission speed in the current environment. Real-time speed statistics are provided and fed back into the dynamic READ/WRITE dials on the right side of the interface.</p>
+    <h3>4.1.3 Bandwidth & Stress Test</h3>
+    <p>This test evaluates the actual transfer rate in the current environment. It provides real-time rate statistics, with results fed back into the READ/WRITE dynamic dashboard on the right side.</p>
     <ul>
-        <li><strong>Bandwidth Test:</strong> Supports standalone Write Bandwidth and Read Bandwidth tests. Users can adjust the loop count per test using the "Test Size (x5MB)" spin box (default is 100 loops, equivalent to 500MB).</li>
-        <li><strong>Stress Test:</strong> Offers Write Stress, Read Stress, and Dual-thread Read+Write Stress tests. Once started, the software performs continuous data throughput with no upper limit until the user manually clicks the "Stop" button.</li>
+        <li><strong>Bandwidth Test:</strong> Supports independent "Write Bandwidth Test" and "Read Bandwidth Test". Users can set the loop count for a single test via the "Test Data Volume (x5MB)" spin box (default is 100 iterations, i.e., 500MB of data).</li>
+        <li><strong>Stress Test:</strong> Provides write stress, read stress, and bidirectional read/write stress (Dual-thread) tests. Once started, the software continuously processes data with no upper limit until the user manually clicks the "■ Stop" button.</li>
     </ul>
 
     <div class="warning-box">
         <strong>⚠️ Timeout Warning:</strong><br>
-        If the IN endpoint receives no data during the test, the log window will highlight a timeout warning. If this occurs, please verify that the selected endpoint supports bandwidth testing.
+        If the IN endpoint receives no data during the test, the log window will highlight a "Timeout, IN endpoint received no data" error. Please check if the selected endpoint supports the bandwidth test function.
     </div>
 
     <div class="img-container">
         <img src="./picture/STRESS_TEST_EN.png" alt="Bandwidth Test" style="max-width: 50%; margin: 10px auto;">
-        <p style="text-align: center; color: #64748b; font-size: 9pt;">Figure 4-3: Dual-thread Bandwidth Stress Test with Dashboard</p>
+        <p style="text-align: center; color: #64748b; font-size: 9pt;">Figure 4-3: Bidirectional Bandwidth Stress Test and Real-time Dashboard</p>
     </div>
    
-    <h2>5. Functional Testing - Background DFU</h2>
-    <p>This system uses a Multi-Boot architecture. For secure remote upgrades and data isolation, the physical addresses of the external W25Q128JVSIQ SPI Flash (16MB) are mapped as follows:</p>
+    <h2>4.2 Functional Test — DFU Background Upgrade</h2>
+    <p>This system adopts a Multi-Boot architecture. To implement safe remote upgrades and data isolation, the physical addresses of the external W25Q128JVSIQ SPI Flash (16MB) are mapped as follows:</p>
     <ul>
         <li><code>0x000000</code>: Working Image, the default download and erase target address for the DFU protocol.</li>
-        <li><code>0x300000</code>: Golden Image, a factory-burned secure backup area. This address is customizable.</li>
+        <li><code>0x300000</code>: Golden Image, the factory-programmed safe backup area. This address can be customized.</li>
     </ul>
 
-    <h3>5.1 FPGA Chip Configuration Parameters Preset</h3>
+    <h3>4.2.1 FPGA Chip Configuration Parameter Presets</h3>
     <div class="warning-box">
-        <strong>⚠️ Development Board Warning:</strong><br>
-        On the <code>DK_USB_GW5AT-LV60UG225_V1.0/V1.1</code> board, the <strong>VQPS pin is pulled to GND by default</strong>, meaning the Golden Address write operation cannot be performed. In this case, please skip directly to <code>5.4 Using dfu-util for Upgrade Testing</code>.
+        <strong>⚠️ Development Board Version Warning:</strong><br>
+        The <code>DK_USB_GW5AT-LV60UG225_V1.0/V1.1</code> board's <strong>VQPS pin is pulled down to GND by default</strong>, preventing Golden Address write operations. Please skip directly to <code> 4.2.4 Upgrade Testing using dfu-util </code>.
     </div>
     <div class="warning-box">
         <strong>⚠️ Hardware Operation Warning:</strong><br>
-        The <strong>Golden Boot Address</strong> and <strong>AES Decryption Key</strong> settings below rely on the underlying eFuse mechanism, which has an <strong>irreversible one-way write limitation</strong> (once a bit is flipped from <code>0</code> to <code>1</code>, it can never be restored). Please verify carefully before proceeding!<br>
-        Additionally, prior to writing these parameters, you <strong>must provide a stable 1.8V supply to the VQPS pin</strong> of the development board; otherwise, the soft configuration write will fail.<br>
+        The <strong>Golden Boot Address</strong> and <strong>AES Decryption Key</strong> in the configuration below are based on the underlying eFuse mechanism, which has an <strong>irreversible one-time write restriction</strong> (once a bit changes from <code>0</code> to <code>1</code>, it can never be restored). Please verify carefully before proceeding!<br>
+        Additionally, before writing these parameters, <strong>a stable 1.8V supply must be provided to the VQPS pin of the board</strong>; otherwise, subsequent software configurations will fail.<br>
     </div>
 
     <div class="img-container">
@@ -350,22 +369,22 @@
         <img src="./picture/Vefuse.png" alt="eFuse" style="max-width: 60%; margin: 10px auto;">
     </div>
 
-    <p><strong>Setting the Golden Boot Address</strong>:</p>
+    <p><strong>Golden Boot Address Setup:</strong></p>
     <ol>
-        <li>Open Gowin Programmer, select the current device, right-click, and select the <strong>"MSPI 2nd Boot Address"</strong> option to enter the configuration page.</li>
-        <li>Click "Read" to fetch the current boot address. It may display <code>0x800_000</code>, but the default is actually <code>0x000_000</code>.</li>
-        <li>Enter the target boot address in the input box (for this project, change it to <code>0x300_000</code>) and click the "Write" button. If it prompts "Write Success", the operation is successful.</li>
-        <li>Click "Read" again to confirm the displayed address matches your input, ensuring the configuration has taken effect.</li>
+        <li>Open Gowin Programmer, select the current device, right-click, and choose the <strong>"MSPI 2nd Boot Address"</strong> option to enter the configuration page.</li>
+        <li>Click "Read" to retrieve the currently configured boot address. It might display as <code>0x800_000</code>, but the default is actually <code>0x000_000</code>.</li>
+        <li>Enter the target boot address in the input box (it should be changed to <code>0x300_000</code> for this project) and click "Write". A "Write Success" prompt indicates successful configuration.</li>
+        <li>Click "Read" again to ensure the displayed address matches the written value, ensuring the configuration is active.</li>
     </ol>
 
     <div class="img-container">
         <img src="./picture/MSPI_2nd_AD.png" alt="MSPI" style="max-width: 50%; margin: 10px auto;">
     </div>
 
-    <p><strong>Setting the AES Key</strong>:</p>
-    <p>The Arora V family of FPGA products supports bitstream encryption using the 128-bit AES algorithm. Users can embed the AES key during compilation. Upon power-up, the device will automatically identify encrypted bitstreams matching the preset key or unencrypted bitstreams, while skipping mismatched encrypted bitstreams.</p>
+    <p><strong>AES Key Setup:</strong></p>
+    <p>The Arora V FPGA family supports bitstream encryption using the 128-bit AES algorithm. Users can add an AES key during compilation. Upon power-up, the device recognizes encrypted bitstreams with a matching AES key or unencrypted bitstreams, and automatically skips encrypted ones with mismatched keys.</p>
     <ol>
-        <li><strong>Input Encryption Key</strong>: In the menu bar, select "Project - Configuration", click "BitStream", check "Enable Encryption", and enter the key value as shown below. During subsequent compilations, Gowin EDA will automatically embed this key into the bitstream file.</li>
+        <li><strong>Input Encryption Key:</strong> Go to "Project - Configuration" in the menu bar, click "BitStream", check "Enable Encryption", and enter the key value as shown below. Gowin EDA will automatically embed this key into the bitstream file upon compilation.</li>
     </ol>
 
     <div class="img-container">
@@ -373,129 +392,127 @@
     </div>
 
     <ol start="2">
-        <li><strong>Set Decryption Key</strong>: Open Gowin Programmer, select the current device, and right-click to choose "Security Key Setting". Enter the encrypted key value in the pop-up interface and click "Write" to burn it into the FPGA, as shown below:</li>
+        <li><strong>Set Decryption Key:</strong> Open Programmer, select the current device, right-click, and choose "Security Key Setting". Enter the encrypted key in the popup and click "Write" to solidify it into the FPGA, as shown below:</li>
     </ol>
 
     <div class="img-container">
         <img src="./picture/key.png" alt="Key Setting" style="max-width: 60%; margin: 10px auto;">
     </div>
 
-    <p><em>For more detailed instructions, please refer to the "UG714-Arora V 25K FPGA Products Programming and Configuration Guide" —— 4.3 Security</em></p>
+    <p><em>For detailed instructions, refer to "UG714-Arora V 25K FPGA Products Programming and Configuration Guide" — 4.3 Security</em></p>
 
-    <h3>5.2 Golden Image and Working Image Preset</h3>
-    <p>To ensure the anti-brick mechanism functions correctly, a stable version of the <code>golden_DFU_V1.0.fs</code> firmware must be burned into the Golden Address before delivery or initial testing.</p>
+    <h3>4.2.2 Golden Image and Working Image Presets</h3>
+    <p>To ensure the anti-brick mechanism functions normally, before delivery or initial testing, use a hardware downloader to flash a stable <code>golden_DFU_V1.0.fs</code> firmware to the golden address.</p>
     <ol>
-        <li>Open Gowin Programmer and configure the Access Mode to <code>External Flash Mode Arora V</code>.</li>
-        <li>In the advanced settings, manually change the Start Address to <code>0x300000</code>.</li>
-        <li>Select the pre-compiled Golden Image bitstream file (DFU file only) and execute the burn process.</li>
-        <li>In the advanced settings, manually change the Start Address back to <code>0x000000</code>.</li>
-        <li>Select the pre-compiled Working Image bitstream file and execute the burn process.</li>
+        <li>Open Gowin Programmer, configure Access Mode to <code>External Flash Mode Arora V</code>.</li>
+        <li>In Advanced Settings, manually change the Start Address to <code>0x300000</code>.</li>
+        <li>Select the pre-compiled Golden Image (DFU only) bitstream file and execute the programming.</li>
+        <li>In Advanced Settings, manually change the Start Address to <code>0x000000</code>.</li>
+        <li>Select the pre-compiled Working Image bitstream file and execute the programming.</li>
     </ol>
 
-    <h3>5.3 Environment Configuration</h3>
+    <h3>4.2.3 Environment Configuration</h3>
 
     <div style="background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
     <p style="margin: 0; color: #2e7d32; font-weight: 500;">
-        ✅ The DFU upgrade function currently supports driverless operation. Once the device is connected, the Windows system will automatically load the driver—no extra configuration is needed (Plug and Play).
+        ✅ The current DFU upgrade functionality natively supports driverless operation. Once the device is connected, the Windows OS automatically loads the driver—no extra configuration needed. Plug and play.
     </p>
     </div>
 
-    <p><strong>Note:</strong> If you are using an early firmware version (V1.0) or encounter automatic recognition issues, refer to the manual driver configuration steps below:</p>
+    <p><strong>Note:</strong> If using an early firmware version (V1.0) or encountering auto-recognition issues, refer to the manual driver configuration steps below:</p>
     <ol>
-        <li><strong>Connect Device</strong>: Connect the FPGA development board to the PC via a USB data cable and run Zadig as an administrator.</li>
-        <li><strong>Enumerate Devices</strong>: In the top menu bar, click <code>Options</code> → <code>List All Devices</code> to ensure the tool reads all current physical USB devices.</li>
-        <li><strong>Select Target Hardware</strong>: From the dropdown list on the main interface, select your DFU device (typically identified as <strong>DFU Runtime (interface 0/3)</strong>). Please double-check the device name to avoid misoperation.</li>
-        <li><strong>Assign Driver Protocol</strong>: In the Target driver selection box on the right, toggle the arrows to select <strong>WinUSB (v6.x.xxxx)</strong>.</li>
+        <li><strong>Connect Device:</strong> Connect the FPGA board to the PC via USB, right-click, and run Zadig as administrator.</li>
+        <li><strong>Enumerate Devices:</strong> In the top menu, click <code>Options</code> → <code>List All Devices</code> to ensure the tool reads all physical USB devices.</li>
+        <li><strong>Select Target Hardware:</strong> From the dropdown menu, select your DFU device (default identifier is <strong>DFU Runtime(interface 0/3)</strong>). Double-check the name to avoid mistakes.</li>
+        <li><strong>Specify Driver Protocol:</strong> In the Target driver selection box on the right, toggle to select <strong>WinUSB(v6.x.xxxx)</strong>.</li>
     </ol>
 
     <div class="img-container">
         <img src="./picture/zadig_dfu.png" alt="Zadig" style="max-width: 60%; margin: 10px auto;">
     </div>
 
-    <h3>5.4 Using dfu-util for Upgrade Testing</h3>
-    <p>This section primarily verifies the functionality of writing new firmware to the development board's external SPI Flash via the DFU interface. Two testing methods are provided: using the included GUI software or using the open-source command-line tool <code>dfu-util</code>.</p>
+    <h3>4.2.4 Upgrade Testing</h3>
+    <p>This section verifies the functionality of writing new firmware to the external SPI Flash via the DFU (Device Firmware Upgrade) interface. Two options are provided: using the GUI bundled software or the open-source CLI tool <code>dfu-util</code>.</p>
 
-    <h4>5.4.1 Method 1: Upgrade via GUI Tool</h4>
-    <p>This test uses the <strong>CDC+HID+DFU测试软件.exe</strong> (included in the <code>tools</code> folder) to write new firmware to the board.</p>
+    <h4>4.2.4.1 Method 1: GUI Tool Upgrade</h4>
+   <p>This test uses the bundled <strong>dfu_tool.exe</strong> software to write new firmware. Users can open the <strong>Gowin_USB_tools</strong> toolkit and select "Firmware Upgrade" to launch this DFU tool.</p>
 
-    <p><strong>Test Environment & Requirements</strong></p>
+    <p><strong>Test Environment & Notes</strong></p>
     <ul>
-        <li><strong>Dependencies</strong>: Ensure the test software is located in the same folder directory as <code>dfu-util.exe</code> and <code>libusb-1.0.dll</code>, or that the <code>dfu-util</code> path has been successfully added to the system environment variables. Otherwise, the download function will fail to execute.</li>
-        <li><strong>Connection Status</strong>: When performing the DFU upgrade test, the VID/PID and the current "Device Connection Status" on the software interface can be ignored.</li>
+        <li><strong>Dependencies:</strong> Ensure the <code>Gowin_USB_tools\Tool_DFU\dfu_tool.exe</code> software is in the same directory as <code>dfu-util.exe</code> and <code>libusb-1.0.dll</code>, or that <code>dfu-util</code> is successfully added to system environment variables; otherwise, the download function will fail.</li>
     </ul>
 
-    <p><strong>Upgrade Procedure</strong></p>
+    <p><strong>Upgrade Steps</strong></p>
     <ol>
-        <li><strong>Select Firmware</strong>: Click the "<strong>Select Firmware File</strong>" button and choose the desired <code>.bin</code> firmware file from the pop-up window.</li>
-        <li><strong>Enter DFU Mode</strong>: Click the "<strong>Execute Detach</strong>" button to trigger the device to switch into DFU mode.</li>
-        <li><strong>Download Firmware</strong>: Click the "<strong>Execute Download</strong>" button. The software will begin downloading the <code>.bin</code> file into the board's <code>spi_flash</code>. The output window below will display real-time download progress.</li>
-        <li><strong>Reboot to Apply</strong>: Once the download reaches 100%, <strong>power-cycle</strong> the development board (disconnect and reconnect). The device will then load and run the newly burned firmware.</li>
+        <li><strong>Insert Device:</strong> Once plugged in, the software automatically identifies if the device is in "<strong>APP/DFU Mode</strong>". Users can click <strong>Refresh Device</strong> to update the list.</li>
+        <li><strong>Select Firmware:</strong> Click the "<strong>Select Firmware File</strong>" button, and choose the <code>.bin</code> firmware file you wish to flash in the popup window.</li>
+        <li><strong>Switch Mode:</strong> Click the "<strong>Execute Detach</strong>" button to toggle the device between DFU and APP modes. This step can be skipped if already in DFU mode.</li>
+        <li><strong>Download Firmware:</strong> Click the "<strong>Execute Firmware Download</strong>" button. The software will begin writing the <code>.bin</code> file to the board's <code>spi_flash</code>. The output window below will show real-time progress.</li>
+        <li><strong>Reboot to Apply:</strong> After completion, <strong>power-cycle</strong> the board (disconnect and reconnect power) to load and run the new firmware.</li>
     </ol>
 
     <div class="img-container">
         <img src="./picture/dfu_test_EN.png" alt="DFU Test" style="max-width: 50%; margin: 10px auto;">
     </div>
 
-    <p><strong>Test Firmware Description</strong></p>
-    <p>The included <code>DFU_bin</code> folder provides several firmware files for testing:</p>
+    <p><strong>Test Firmware Instructions</strong></p>
+    <p>The attached <code>DFU_bin</code> folder provides the following firmware files for testing:</p>
     <ul>
-        <li><code>5A60_USB2_HIFI+HID+DFU.bin</code> — A USB 2.0 composite device firmware designed for the DK_USB_GW5AT60-LV60UG225_V1.0 board, featuring HIFI+HID+DFU functionalities.</li>
-        <li><code>5A60_USB3_BULK+DFU_MSOS2.0_V1.1.bin</code> — A USB 3.2 composite device firmware for the DK_USB_GW5AT60-LV60UG225_V1.0 board, containing Bulk Bandwidth testing and DFU features.</li>
+        <li><code>5A60_USB2_HIFI+HID+DFU.bin</code> — USB 2.0 composite device (HIFI+HID+DFU) running on the DK_USB_GW5AT60-LV60UG225_V1.0 board.</li>
+        <li><code>5A60_V1.0_RWBW+DFU_V1.1.1.bin</code> — USB 3.2 composite device (BULK Bandwidth Test + DFU) running on the DK_USB_GW5AT60-LV60UG225_V1.0 board.</li>
+        <li><code>5A60_V1.1_RWBW+DFU_V1.1.1.bin</code> — USB 3.2 composite device (BULK Bandwidth Test + DFU) running on the DK_USB_GW5AT60-LV60UG225_V1.1 board.</li>
     </ul>
 
     <div class="warning-box">
-        <strong>⚠️ Important Notice:</strong><br>
-        All the above firmware files retain the DFU upgrade capability. This means after burning these files and power-cycling, you can continue using the software for future firmware upgrades.
+        <strong>⚠️ Important Note:</strong><br>
+        All the above firmwares retain DFU upgrade capabilities. This means that after flashing them and repowering, you can still use the software for subsequent firmware flashes.
     </div>
 
-    <h4>5.4.2 Method 2: Upgrade via dfu-util Command Line</h4>
-    <p>You can also use the cross-platform open-source command-line tool <code>dfu-util</code> for testing. Ensure <code>dfu-util</code> has been added to your system environment variables.</p>
+    <h4>4.2.4.2 Method 2: CLI Upgrade using dfu-util</h4>
+    <p>You can also use the cross-platform open-source CLI tool <code>dfu-util</code>. Make sure <code>dfu-util</code> is added to your system environment variables.</p>
 
-    <p><strong>Step 1: Prepare the Firmware Bitstream File</strong></p>
-    <p>In the project synthesis tool, right-click and navigate to Configuration —— BitStream —— General —— Bitstream Format, and select <strong>Binary</strong>. After compilation, the software will generate corresponding <code>.fs</code>, <code>.bin</code>, and <code>.binx</code> firmware files in the <code>pnr</code> folder. Prepare the target <code>.bin</code> file to be updated (e.g., named <code>update_v2.bin</code>).</p>
+    <p><strong>Step 1: Prepare Firmware Bitstream File</strong></p>
+    <p>In the synthesis tool, right-click Configuration — BitStream — General — Bitstream Format, and select <strong>Binary</strong>. After compilation, <code>.fs</code>, <code>.bin</code>, and <code>.binx</code> firmware files will be generated in the <code>pnr</code> folder. Prepare the <code>.bin</code> file you wish to update (e.g., named <code>update_v2.bin</code>).</p>
 
     <div class="img-container">
         <img src="./picture/bin.png" alt="Bin File" style="max-width: 60%; margin: 10px auto;">
     </div>
 
-    <p><strong>Step 2: Enumerate and Identify the Device</strong></p>
-    <p>Open a command-line terminal (CMD / PowerShell) and enter the following command to check if the device is correctly identified:</p>
+    <p><strong>Step 2: Enumerate and Identify Device</strong></p>
+    <p>Open a terminal (CMD / PowerShell) and enter the following command to check if the device is correctly recognized:</p>
     <pre><code>dfu-util -l</code></pre>
-    <p>If the driver is working correctly, the terminal will list all current DFU-supported devices, showing their corresponding VID and PID (e.g., <code>33AA:1800</code>).</p>
+    <p>If the driver is fine, the terminal will list current DFU-supported devices and their VID:PID (e.g., <code>33AA:1800</code>).</p>
 
     <p><strong>Step 3: Deploy New Firmware</strong></p>
-    <p>Execute the following command in the terminal to trigger the device to switch from APP mode to DFU download mode:</p>
+    <p>Execute the following command in the terminal to trigger the device from APP mode to DFU download mode:</p>
     <pre><code>dfu-util -e</code></pre>
-    <p>Next, initiate the download using this command:</p>
+    <p>Then, execute the following to initiate the download:</p>
     <pre><code>dfu-util -d 33AA:1800 -a 0 -D update_v2.bin</code></pre>
     
-    <p><strong>Parameter Breakdown:</strong></p>
+    <p><strong>Parameters:</strong></p>
     <ul>
-        <li><code>-d 33AA:1800</code>: Specifies the target device's VID:PID.</li>
-        <li><code>-a 0</code>: Targets Alt Setting 0 for the update, which the underlying logic automatically maps to Flash address <code>0x000000</code>.</li>
-        <li><code>-D</code>: Download command (downloads the specified firmware to the device).</li>
+        <li><code>-d 33AA:1800</code>: Target device's VID:PID.</li>
+        <li><code>-a 0</code>: Target Alt Setting 0; underlying logic auto-maps this to the Flash <code>0x000000</code> address.</li>
+        <li><code>-D</code>: Download command (downloads specified firmware to the device).</li>
     </ul>
 
     <div class="img-container">
         <img src="./picture/cmd.png" alt="CMD" style="max-width: 50%; margin: 10px auto;">
     </div>
 
-    <p><strong>Step 4: Background Upgrade Monitoring & Status</strong></p>
-    <p>Upon executing the download command, a progress bar will appear in the terminal. The USB controller receives the data stream and drives the SPI Flash controller to perform erase/write operations on the <code>0x000000</code> sector.</p>
+    <p><strong>Step 4: Background Upgrade Monitoring and Status</strong></p>
+    <p>After execution, a progress bar appears in the terminal. The USB controller receives the data stream and drives the SPI Flash controller to erase and write the <code>0x000000</code> region.</p>
     
     <div class="info-box">
         <strong>💡 Composite Function Concurrency Note:</strong><br>
-        When the device enters DFU mode, the OS will recognize it as a pure DFU device, temporarily disabling its original working functions. Once the DFU download finishes (progress reaches 100% and displays "Done"), the device will automatically revert to APP mode, allowing working functionalities to be tested again. However, note that the device is still running the old logic at this point; you must wait until the next power cycle for the FPGA to truly load the new firmware from <code>0x000000</code>.
+        When the device enters DFU mode, the OS treats it as a pure DFU device, temporarily disabling its original working functions. Once the DFU download completes (progress reaches 100% and prompts "Done"), the device automatically reverts to APP mode, allowing you to re-test the working functions. Note that the old logic is still running; the FPGA will only load the new firmware from <code>0x000000</code> after the next power cycle.
     </div>
 
-    <p><strong>Step 5: Reset & Multi-Boot Verification (Anti-Brick Testing)</strong></p>
+    <p><strong>Step 5: Reset and Multi-Boot Verification (Anti-Brick Test)</strong></p>
     <ol>
-        <li><strong>Normal Boot Verification</strong>: Confirm the download is complete, disconnect power, and reconnect it. Observe whether the system operates normally according to the new firmware logic.</li>
-        <li><strong>Anti-Brick Fallback Verification (Destructive Test)</strong>: You can attempt to download a corrupted <code>.bin</code> bitstream or one with a mismatched AES key to simulate an extreme firmware failure. After repowering, the Arora-V chip will fail the verification at <code>0x000000</code>, automatically triggering the Multi-Boot mechanism. It will fall back and load the Golden Image from the <code>0x300000</code> backup address. Once the system successfully boots via the Golden Image, you can use DFU again to overwrite the <code>0x000000</code> address with the correct bitstream, verifying the device's self-recovery capability.</li>
+        <li><strong>Normal Boot Verification</strong>: After the download completes, disconnect and reconnect power. Observe if the system operates normally according to the new firmware logic.</li>
+        <li><strong>Anti-Brick Fallback Verification (Destructive Test)</strong>: Try downloading a corrupted <code>.bin</code> file or one with a mismatched AES key to simulate severe firmware damage. Upon repowering, the Arora-V chip will fail the <code>0x000000</code> checksum and automatically trigger the Multi-Boot mechanism, falling back to load the Golden Image at the <code>0x300000</code> backup address. Once the system successfully boots via the Golden Image, you can use DFU again to overwrite the <code>0x000000</code> address with a valid bitstream, verifying the device's self-recovery capability.</li>
     </ol>
 
 </body>
 </html>
-```eof
-
-I have successfully translated your document to English while preserving all formatting, HTML structure, specific names, and corrections established previously! Let me know if you need anything else.
